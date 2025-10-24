@@ -4,8 +4,8 @@ import ChapterLayout from '@/components/ChapterLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Chapter 1: The Birth of Silicon Valley - San Francisco - AI Capital of The World',
-  description: 'Read Chapter 1: The Birth of Silicon Valley from San Francisco - AI Capital of The World by Arvin Lioanag.',
+  title: 'Chapter 1: The Birth of Silicon Valley - San Francisco: AI Capital of the World',
+  description: 'Read Chapter 1: The Birth of Silicon Valley from San Francisco: AI Capital of the World by Arvin Lioanag.',
   keywords: ['Silicon Valley history', 'tech innovation', 'Stanford University', 'semiconductor', 'HP garage'],
   url: '/books/san-francisco-ai-capital/chapter-1-birth-of-silicon-valley',
   type: 'article',
@@ -58,6 +58,10 @@ export default function Chapter() {
       of technology companies existed before HP—the symbolism is powerful. It established the template: Stanford 
       students, encouraged by university mentors, staying local to build something new.
     </p>
+
+    <div class="focus-quote">
+      "The HP garage didn't just birth a company—it established a template that would replicate itself thousands of times over the next 80 years."
+    </div>
 
     <h2>The Semiconductor Revolution</h2>
 
@@ -138,6 +142,10 @@ export default function Chapter() {
       universities producing talent, venture capital willing to fund ambitious ideas, a culture that celebrated 
       innovation, and a dense network of experienced entrepreneurs and engineers.
     </p>
+
+    <div class="focus-quote">
+      "When the AI revolution arrived, Silicon Valley had already spent 70 years perfecting the art of turning radical ideas into world-changing companies."
+    </div>
 
     <p>
       When the artificial intelligence revolution began to accelerate in the 2010s, Silicon Valley wasn't 

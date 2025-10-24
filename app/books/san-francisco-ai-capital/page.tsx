@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 import { BOOK_SERIES_INFO } from '@/lib/seo-constants';
 
 export const metadata: Metadata = generateSEO({
-  title: 'San Francisco - AI Capital of The World - Full Book',
+  title: 'San Francisco: AI Capital of the World - Full Book',
   description: 'Read the complete book exploring how San Francisco and Silicon Valley became the undisputed epicenter of artificial intelligence innovation, shaping the future of technology and humanity.',
   keywords: [
     'San Francisco',
@@ -46,7 +46,7 @@ const chapters = [
 
 export default function SanFranciscoAICapitalBookPage() {
   const bookSchema = generateBookSchema({
-    name: 'San Francisco - AI Capital of The World',
+    name: 'San Francisco: AI Capital of the World',
     description: 'An in-depth exploration of how San Francisco and Silicon Valley became the epicenter of artificial intelligence innovation, examining the people, companies, and culture that are shaping the future of technology.',
     author: 'Arvin Lioanag',
     isbn: BOOK_SERIES_INFO['san-francisco-ai-capital'].isbn || 'B0FHGCHVL1',
@@ -59,7 +59,7 @@ export default function SanFranciscoAICapitalBookPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: 'Intelligence Amplifier Series', url: '/intelligence-amplifier-series' },
-    { name: 'San Francisco - AI Capital of The World', url: '/intelligence-amplifier-series/san-francisco-ai-capital' },
+    { name: 'San Francisco: AI Capital of the World', url: '/intelligence-amplifier-series/san-francisco-ai-capital' },
     { name: 'Read Online', url: '/books/san-francisco-ai-capital' },
   ]);
 
@@ -91,13 +91,13 @@ export default function SanFranciscoAICapitalBookPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
               {/* Book Cover */}
               <div className="lg:col-span-1">
-                <div className="sticky top-24">
-                  <div className="aspect-[2/3] rounded-[20px] overflow-hidden shadow-2xl relative">
+                <div className="sticky top-24 px-4 sm:px-6 lg:px-8">
+                  <div className="aspect-square rounded-[20px] overflow-hidden shadow-2xl relative mx-auto max-w-2xl bg-white dark:bg-gray-100">
                     <Image
                       src="/book-covers/san-francisco-ai-capital.jpg.webp"
-                      alt="San Francisco - AI Capital of The World Book Cover"
+                      alt="San Francisco: AI Capital of the World Book Cover"
                       fill
-                      className="object-cover"
+                      className="object-contain"
                       priority
                     />
                   </div>
@@ -107,12 +107,12 @@ export default function SanFranciscoAICapitalBookPage() {
                     href="https://www.amazon.com/San-Francisco-Capital-Intelligence-Amplifier/dp/B0FHGCHVL1"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 block w-full px-6 py-4 bg-[#007AFF] dark:bg-[#0A84FF] text-white text-center rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
+                    className="mt-6 block w-full px-6 py-4 bg-[#007AFF] dark:bg-[#0A84FF] text-white text-center rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg max-w-2xl mx-auto"
                   >
                     📚 Buy on Amazon
                   </a>
                   
-                  <div className="mt-4 text-center text-sm text-[#1d1d1f]/70 dark:text-white/70">
+                  <div className="mt-4 text-center text-sm text-[#1d1d1f]/70 dark:text-white/70 max-w-2xl mx-auto">
                     Available in paperback and Kindle
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export default function SanFranciscoAICapitalBookPage() {
               <div className="lg:col-span-2">
                 <div className="glass-card rounded-[24px] p-8 sm:p-10">
                   <h1 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] dark:text-white mb-4 tracking-tight">
-                    San Francisco - AI Capital of The World
+                    San Francisco: AI Capital of the World
                   </h1>
                   
                   <p className="text-xl text-[#1d1d1f]/70 dark:text-white/70 mb-6">
@@ -137,7 +137,7 @@ export default function SanFranciscoAICapitalBookPage() {
                     </p>
                     <p className="text-lg text-[#1d1d1f] dark:text-white leading-relaxed mt-4">
                       Explore the people, companies, and culture that transformed the Bay Area into 
-                      <strong> the AI Capital of The World</strong>—and discover what the future holds 
+                      <strong> the AI Capital of the World</strong> and discover what the future holds 
                       for this extraordinary hub of technological advancement.
                     </p>
                   </div>

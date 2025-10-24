@@ -5,7 +5,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'San Francisco - AI Capital of The World | Read Online',
+  title: 'San Francisco: AI Capital of the World | Read Online',
   description: 'Explore the epicenter of artificial intelligence innovation in Silicon Valley.',
 };
 
@@ -30,7 +30,7 @@ export default function SanFranciscoAICapital() {
                 <div className="aspect-[2/3] rounded-[20px] overflow-hidden shadow-2xl">
                   <Image
                     src="/book-covers/san-francisco-ai-capital.jpg.webp"
-                    alt="San Francisco - AI Capital of The World Book Cover"
+                    alt="San Francisco: AI Capital of the World Book Cover"
                     width={400}
                     height={600}
                     className="object-contain w-full h-full"
@@ -41,7 +41,7 @@ export default function SanFranciscoAICapital() {
               {/* Book Info */}
               <div className="flex-1">
                 <h1 className="text-4xl sm:text-5xl font-black text-[#000000] dark:text-white mb-4 tracking-tight leading-tight">
-                  San Francisco - AI Capital of The World
+                  San Francisco: AI Capital of the World
                 </h1>
                 <p className="text-xl text-[#007AFF] dark:text-[#0A84FF] font-bold mb-6 uppercase tracking-wide">
                   Intelligence Amplifier Series - Book 1

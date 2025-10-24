@@ -4,8 +4,8 @@ import ChapterLayout from '@/components/ChapterLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Chapter 2: The Tech Giants: Building the Foundation - San Francisco - AI Capital of The World',
-  description: 'Read Chapter 2: The Tech Giants from San Francisco - AI Capital of The World by Arvin Lioanag.',
+  title: 'Chapter 2: The Tech Giants: Building the Foundation - San Francisco: AI Capital of the World',
+  description: 'Read Chapter 2: The Tech Giants from San Francisco: AI Capital of the World by Arvin Lioanag.',
   keywords: ['tech giants', 'Google', 'Apple', 'Facebook', 'Intel', 'Oracle', 'Silicon Valley companies'],
   url: '/books/san-francisco-ai-capital/chapter-2-tech-giants',
   type: 'article',
@@ -87,6 +87,10 @@ export default function Chapter() {
       became the foundation for modern large language models. These contributions cemented Google's position as 
       an AI leader.
     </p>
+
+    <div class="focus-quote">
+      "Google didn't just search the internet—it built the computational infrastructure and AI breakthroughs that would power the entire industry."
+    </div>
 
     <h2>Facebook (Meta): Connecting the World, Mining the Data</h2>
 
@@ -179,6 +183,10 @@ export default function Chapter() {
       <li>Business models that could support years of expensive research with uncertain returns</li>
       <li>A talent pool of engineers and researchers comfortable pushing the boundaries of what's possible</li>
     </ul>
+
+    <div class="focus-quote">
+      "The tech giants didn't just build products—they built the entire infrastructure stack that made the AI revolution possible."
+    </div>
 
     <p>
       Everything was in place. All that was needed was a catalyst—a demonstration that AI was ready to move from 

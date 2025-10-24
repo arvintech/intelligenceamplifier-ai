@@ -4,8 +4,8 @@ import ChapterLayout from '@/components/ChapterLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Chapter 6: OpenAI, Google, and the Race for AGI - San Francisco - AI Capital of The World',
-  description: 'Read Chapter 6: The Race for AGI from San Francisco - AI Capital of The World by Arvin Lioanag.',
+  title: 'Chapter 6: OpenAI, Google, and the Race for AGI - San Francisco: AI Capital of the World',
+  description: 'Read Chapter 6: The Race for AGI from San Francisco: AI Capital of the World by Arvin Lioanag.',
   keywords: ['OpenAI', 'Google AI', 'AGI', 'artificial general intelligence', 'ChatGPT', 'GPT-4', 'DeepMind'],
   url: '/books/san-francisco-ai-capital/chapter-6-race-for-agi',
   type: 'article',
@@ -117,6 +117,10 @@ export default function Chapter() {
       organization that started as an idealistic non-profit had become one of the most valuable AI companies in 
       the world.
     </p>
+
+    <div class="focus-quote">
+      "GPT-4's capabilities weren't just impressive—they were ahead of schedule. The future arrived faster than anyone predicted."
+    </div>
 
     <h2>Google: The Incumbent's Challenge</h2>
 
@@ -254,6 +258,10 @@ export default function Chapter() {
       The fact that this race is centered in San Francisco—that the organizations building toward AGI are primarily 
       Bay Area companies—means that a small geographic area is making decisions that will affect all of humanity.
     </p>
+
+    <div class="focus-quote">
+      "A 50-square-mile region is making decisions that will determine the trajectory of human civilization for centuries to come."
+    </div>
 
     <p>
       Whether that's inspiring or terrifying probably depends on how much you trust Silicon Valley.

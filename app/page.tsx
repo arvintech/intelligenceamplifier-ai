@@ -174,7 +174,7 @@ export default function Home() {
                   </div>
                   
                   <p className="text-lg text-[#1d1d1f] dark:text-white leading-relaxed font-medium">
-                    A groundbreaking series exploring our evolving relationship with artificial intelligence. From Silicon Valley's innovation culture to the philosophical depths of human spirit, each book offers a unique lens to examine our AI-augmented future.
+                    A groundbreaking series exploring our evolving relationship with artificial intelligence. From Silicon Valley&apos;s innovation culture to the philosophical depths of human spirit, each book offers a unique lens to examine our AI-augmented future.
                   </p>
                   
                   <div className="space-y-3">
@@ -184,7 +184,7 @@ export default function Home() {
                     <ul className="space-y-2">
                       <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
                         <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
-                        <span className="font-medium">San Francisco - AI Capital of The World</span>
+                        <span className="font-medium">San Francisco: AI Capital of the World</span>
                       </li>
                       <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
                         <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
@@ -217,7 +217,7 @@ export default function Home() {
                       <div className="aspect-[2/3] rounded-[24px] overflow-hidden shadow-2xl hover:scale-[1.05] transition-all duration-300 relative">
                         <Image
                           src="/book-covers/san-francisco-ai-capital.jpg.webp"
-                          alt="San Francisco - AI Capital of The World"
+                          alt="San Francisco: AI Capital of the World"
                           width={500}
                           height={750}
                           className="object-contain w-full h-full"
@@ -443,7 +443,7 @@ const projects = [
     iconBg: "bg-[#007AFF] dark:bg-[#0A84FF]",
     title: "Intelligence Amplifier Series",
     subtitle: "Attitudes towards AI",
-    description: "A series of books exploring our relationship with artificial intelligence: San Francisco - AI Capital of The World, Alarming Rise of Stupidity Amplified, The Amplified Human Spirit, and Amplified Nietzsche (coming soon).",
+    description: "A series of books exploring our relationship with artificial intelligence: San Francisco: AI Capital of the World, Alarming Rise of Stupidity Amplified, The Amplified Human Spirit, and Amplified Nietzsche (coming soon).",
     status: "Published",
     statusBg: "bg-[#007AFF]/10 dark:bg-[#0A84FF]/20",
     statusText: "text-[#007AFF] dark:text-[#0A84FF]",

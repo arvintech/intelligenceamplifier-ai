@@ -98,12 +98,31 @@ export default function ChapterLayout({
               <div 
                 className="prose dark:prose-invert max-w-none prose-lg
                   prose-headings:text-[#1d1d1f] dark:prose-headings:text-white
+                  prose-headings:font-bold prose-headings:tracking-tight
                   prose-p:text-[#1d1d1f] dark:prose-p:text-white
                   prose-p:leading-relaxed
+                  [&_p]:mb-[22px]
                   prose-strong:text-[#1d1d1f] dark:prose-strong:text-white
                   prose-a:text-[#007AFF] dark:prose-a:text-[#0A84FF]
                   prose-blockquote:border-l-[#007AFF] dark:prose-blockquote:border-l-[#0A84FF]
                   prose-blockquote:text-[#1d1d1f] dark:prose-blockquote:text-white
+                  prose-ul:my-8 prose-ol:my-8
+                  prose-li:text-[#1d1d1f] dark:prose-li:text-white
+                  prose-li:leading-relaxed
+                  [&_li]:mb-4 [&_li]:pl-2
+                  [&_ol]:space-y-4 [&_ul]:space-y-4
+                  [&_h2]:!text-4xl [&_h2]:!mt-20 [&_h2]:!mb-10
+                  [&_h2]:!pb-4 [&_h2]:!border-b-2 [&_h2]:!border-[#007AFF]/20
+                  dark:[&_h2]:!border-[#0A84FF]/20
+                  [&_h2]:!text-[#007AFF] dark:[&_h2]:!text-[#0A84FF]
+                  [&_h2]:!font-bold
+                  [&_.focus-quote]:text-center [&_.focus-quote]:my-16 [&_.focus-quote]:text-3xl
+                  [&_.focus-quote]:font-bold [&_.focus-quote]:text-[#007AFF] dark:[&_.focus-quote]:text-[#0A84FF]
+                  [&_.focus-quote]:leading-tight [&_.focus-quote]:px-8 [&_.focus-quote]:py-12
+                  [&_.focus-quote]:bg-gradient-to-r [&_.focus-quote]:from-[#007AFF]/5 [&_.focus-quote]:to-[#AF52DE]/5
+                  dark:[&_.focus-quote]:from-[#0A84FF]/5 dark:[&_.focus-quote]:to-[#BF5AF2]/5
+                  [&_.focus-quote]:rounded-2xl [&_.focus-quote]:border-2 [&_.focus-quote]:border-[#007AFF]/20
+                  dark:[&_.focus-quote]:border-[#0A84FF]/20
                 "
                 dangerouslySetInnerHTML={{ __html: chapterContent }}
               />
@@ -160,6 +179,11 @@ export default function ChapterLayout({
     </>
   );
 }
+
+
+
+
+
 
 
 

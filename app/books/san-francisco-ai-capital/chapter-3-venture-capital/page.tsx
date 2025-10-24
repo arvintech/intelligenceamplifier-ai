@@ -4,8 +4,8 @@ import ChapterLayout from '@/components/ChapterLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Chapter 3: Venture Capital: Fueling the Fire - San Francisco - AI Capital of The World',
-  description: 'Read Chapter 3: Venture Capital from San Francisco - AI Capital of The World by Arvin Lioanag.',
+  title: 'Chapter 3: Venture Capital: Fueling the Fire - San Francisco: AI Capital of the World',
+  description: 'Read Chapter 3: Venture Capital from San Francisco: AI Capital of the World by Arvin Lioanag.',
   keywords: ['venture capital', 'VC', 'startup funding', 'Sand Hill Road', 'Sequoia', 'a16z', 'Y Combinator'],
   url: '/books/san-francisco-ai-capital/chapter-3-venture-capital',
   type: 'article',
@@ -74,6 +74,10 @@ export default function Chapter() {
       that followed.
     </p>
 
+    <div class="focus-quote">
+      "Venture capital didn't just fund Silicon Valley's growth—it created the risk-taking culture that makes moonshot ideas possible."
+    </div>
+
     <h2>Andreessen Horowitz: The New Power</h2>
 
     <p>
@@ -121,6 +125,10 @@ export default function Chapter() {
       These valuations would have been unthinkable even five years earlier for pre-revenue or early-revenue companies. 
       But VCs, seeing the potential for AI to transform every industry, were willing to place enormous bets.
     </p>
+
+    <div class="focus-quote">
+      "In 2023 alone, venture capitalists invested more in AI than was spent on the entire Manhattan Project, adjusted for inflation."
+    </div>
 
     <h2>The Risk and the Reward</h2>
 

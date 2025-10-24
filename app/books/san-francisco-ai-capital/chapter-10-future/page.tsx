@@ -4,8 +4,8 @@ import ChapterLayout from '@/components/ChapterLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Chapter 10: The Future of AI Capital - San Francisco - AI Capital of The World',
-  description: 'Read Chapter 10: The Future of AI Capital from San Francisco - AI Capital of The World by Arvin Lioanag.',
+  title: 'Chapter 10: The Future of AI Capital - San Francisco: AI Capital of the World',
+  description: 'Read Chapter 10: The Future of AI Capital from San Francisco: AI Capital of the World by Arvin Lioanag.',
   keywords: ['future of AI', 'AI capital future', 'San Francisco future', 'tech trends', 'AI predictions'],
   url: '/books/san-francisco-ai-capital/chapter-10-future',
   type: 'article',
@@ -51,6 +51,10 @@ export default function Chapter() {
       success: the best researchers want to work where the best research happens, VCs want to invest where other 
       VCs are investing, and companies locate where the ecosystem is strongest.
     </p>
+
+    <div class="focus-quote">
+      "The most likely future is often the one that's already in motion. Silicon Valley's momentum may be its greatest advantage."
+    </div>
 
     <h2>Scenario 2: The Distributed Future</h2>
 
@@ -267,6 +271,10 @@ export default function Chapter() {
       regulations, and social arrangements that ensure AI benefits humanity broadly rather than concentrating power 
       and wealth in one city on the edge of a continent.
     </p>
+
+    <div class="focus-quote">
+      "The future isn't predetermined. Every choice being made right now in San Francisco shapes humanity's trajectory for centuries."
+    </div>
 
     <p>
       The future of the AI capital isn't written yet. But it's being written now, in offices and labs throughout 

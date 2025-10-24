@@ -4,8 +4,8 @@ import ChapterLayout from '@/components/ChapterLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Chapter 7: The Talent Magnet - San Francisco - AI Capital of The World',
-  description: 'Read Chapter 7: The Talent Magnet from San Francisco - AI Capital of The World by Arvin Lioanag.',
+  title: 'Chapter 7: The Talent Magnet - San Francisco: AI Capital of the World',
+  description: 'Read Chapter 7: The Talent Magnet from San Francisco: AI Capital of the World by Arvin Lioanag.',
   keywords: ['AI talent', 'tech talent', 'Stanford', 'Berkeley', 'AI researchers', 'brain drain'],
   url: '/books/san-francisco-ai-capital/chapter-7-talent-magnet',
   type: 'article',
@@ -95,6 +95,10 @@ export default function Chapter() {
       Google's acquisition of DeepMind for $500 million in 2014 was largely about the research team. The price 
       tag seems modest in retrospect; DeepMind's achievements have been worth far more.
     </p>
+
+    <div class="focus-quote">
+      "A single top AI researcher can now command more compensation than a small hospital pays its entire medical staff."
+    </div>
 
     <h2>The Diversity Challenge</h2>
 
@@ -201,6 +205,10 @@ export default function Chapter() {
       others emphasized that cutting-edge AI research benefits from in-person collaboration. This requirement also 
       reinforced the Bay Area's advantage: if researchers need to be physically present, they need to be in San Francisco.
     </p>
+
+    <div class="focus-quote">
+      "The world's AI talent doesn't just prefer San Francisco—they need to be there. The concentration is the competitive advantage."
+    </div>
 
     <blockquote>
       <p>

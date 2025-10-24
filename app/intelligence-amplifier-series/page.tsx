@@ -222,7 +222,7 @@ export default function IntelligenceAmplifierSeries() {
 
 const books = [
   {
-    title: "San Francisco - AI Capital of The World",
+    title: "San Francisco: AI Capital of the World",
     subtitle: "Book 1",
     icon: "🌉",
     coverBg: "bg-gradient-to-br from-[#007AFF] to-[#0A84FF]",

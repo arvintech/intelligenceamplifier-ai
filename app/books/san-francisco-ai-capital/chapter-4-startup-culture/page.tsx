@@ -4,8 +4,8 @@ import ChapterLayout from '@/components/ChapterLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Chapter 4: The Startup Culture - San Francisco - AI Capital of The World',
-  description: 'Read Chapter 4: The Startup Culture from San Francisco - AI Capital of The World by Arvin Lioanag.',
+  title: 'Chapter 4: The Startup Culture - San Francisco: AI Capital of the World',
+  description: 'Read Chapter 4: The Startup Culture from San Francisco: AI Capital of the World by Arvin Lioanag.',
   keywords: ['startup culture', 'entrepreneurship', 'Silicon Valley culture', 'innovation', 'hustle culture'],
   url: '/books/san-francisco-ai-capital/chapter-4-startup-culture',
   type: 'article',
@@ -59,6 +59,10 @@ export default function Chapter() {
       of users and learn from the response. Traditional tech companies might have spent another year in closed beta. 
       OpenAI shipped and iterated in public.
     </p>
+
+    <div class="focus-quote">
+      "In Silicon Valley, shipping an imperfect product is celebrated. Endlessly perfecting something that never launches is career suicide."
+    </div>
 
     <h2>The Pivot: Failing Forward</h2>
 
@@ -177,6 +181,10 @@ export default function Chapter() {
       that are safe, reliable, and beneficial requires not just technical brilliance but the stubborn optimism 
       that it's possible.
     </p>
+
+    <div class="focus-quote">
+      "Startup culture isn't just about building companies—it's about believing you can solve problems everyone else thinks are unsolvable."
+    </div>
 
     <h2>Evolution and Maturation</h2>
 

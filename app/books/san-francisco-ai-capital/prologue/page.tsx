@@ -4,8 +4,8 @@ import ChapterLayout from '@/components/ChapterLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Prologue: The Golden Gate to the Future - San Francisco - AI Capital of The World',
-  description: 'Read the Prologue: The Golden Gate to the Future from San Francisco - AI Capital of The World by Arvin Lioanag.',
+  title: 'Prologue: The Golden Gate to the Future - San Francisco: AI Capital of the World',
+  description: 'Read the Prologue: The Golden Gate to the Future from San Francisco: AI Capital of the World by Arvin Lioanag.',
   keywords: ['San Francisco', 'AI capital', 'Silicon Valley', 'tech innovation', 'artificial intelligence'],
   url: '/books/san-francisco-ai-capital/prologue',
   type: 'article',
@@ -46,6 +46,10 @@ export default function Chapter() {
       unique ecosystem where brilliant minds, risk-taking capital, and a culture of relentless innovation 
       converged to create something extraordinary.
     </p>
+
+    <div class="focus-quote">
+      "San Francisco isn't just the AI capital of the world—it's the laboratory where humanity is actively experimenting with its own future."
+    </div>
 
     <h2>The Journey Ahead</h2>
 

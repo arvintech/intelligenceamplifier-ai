@@ -4,8 +4,8 @@ import ChapterLayout from '@/components/ChapterLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Chapter 8: The Dark Side - San Francisco - AI Capital of The World',
-  description: 'Read Chapter 8: The Dark Side from San Francisco - AI Capital of The World by Arvin Lioanag.',
+  title: 'Chapter 8: The Dark Side - San Francisco: AI Capital of the World',
+  description: 'Read Chapter 8: The Dark Side from San Francisco: AI Capital of the World by Arvin Lioanag.',
   keywords: ['housing crisis', 'inequality', 'displacement', 'gentrification', 'homelessness', 'tech impact'],
   url: '/books/san-francisco-ai-capital/chapter-8-dark-side',
   type: 'article',
@@ -49,6 +49,10 @@ export default function Chapter() {
       can afford housing that a teacher, nurse, or service worker cannot. The result: teachers commute from Central 
       Valley towns 90 minutes away, longtime residents are pushed out, and the city's character changes.
     </p>
+
+    <div class="focus-quote">
+      "The median home in San Francisco costs more than most Americans will earn in their entire working lives."
+    </div>
 
     <h2>The Displacement Story</h2>
 
@@ -219,6 +223,10 @@ export default function Chapter() {
       to generate enormous wealth while potentially displacing millions of workers. If that wealth concentrates 
       in the Bay Area while job losses are distributed across the country, inequality could worsen dramatically.
     </p>
+
+    <div class="focus-quote">
+      "San Francisco created technologies that changed the world. It couldn't build enough housing for the people building those technologies."
+    </div>
 
     <p>
       The question isn't whether AI will be developed in San Francisco—that's already happening. The question is 

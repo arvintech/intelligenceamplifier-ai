@@ -4,8 +4,8 @@ import ChapterLayout from '@/components/ChapterLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Chapter 5: The AI Awakening - San Francisco - AI Capital of The World',
-  description: 'Read Chapter 5: The AI Awakening from San Francisco - AI Capital of The World by Arvin Lioanag.',
+  title: 'Chapter 5: The AI Awakening - San Francisco: AI Capital of the World',
+  description: 'Read Chapter 5: The AI Awakening from San Francisco: AI Capital of the World by Arvin Lioanag.',
   keywords: ['AI awakening', 'deep learning', 'neural networks', 'AI revolution', 'machine learning breakthrough'],
   url: '/books/san-francisco-ai-capital/chapter-5-ai-awakening',
   type: 'article',
@@ -98,6 +98,10 @@ export default function Chapter() {
       developing AI strategies.
     </p>
 
+    <div class="focus-quote">
+      "AlphaGo didn't just win a game—it shattered the assumption that human intuition was unreachable by machines."
+    </div>
+
     <h2>Natural Language: The Final Frontier</h2>
 
     <p>
@@ -184,6 +188,10 @@ export default function Chapter() {
       use, and it was genuinely useful. The awakening that had been building in research labs for a decade had 
       finally reached the mainstream.
     </p>
+
+    <div class="focus-quote">
+      "ChatGPT reached 100 million users faster than any product in history. The AI revolution didn't arrive gradually—it exploded overnight."
+    </div>
 
     <blockquote>
       <p>
