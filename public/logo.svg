@@ -1,0 +1,23 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .logo-text { font-family: 'Brush Script MT', cursive; fill: #2d5016; font-size: 48px; }
+    .logo-bars { fill: #2d5016; }
+    .trademark { font-family: Arial, sans-serif; font-size: 16px; fill: #2d5016; }
+  </style>
+  
+  <!-- IA Letters -->
+  <rect class="logo-bars" x="85" y="68" width="35" height="340"/>
+  <rect class="logo-bars" x="145" y="68" width="35" height="340"/>
+  <polygon class="logo-bars" points="145,240 180,240 255,68 220,68"/>
+  <polygon class="logo-bars" points="220,180 270,300 320,300 255,140"/>
+  <polygon class="logo-bars" points="240,220 290,340 340,340 275,180"/>
+  <polygon class="logo-bars" points="220,330 350,330 340,360 230,360"/>
+  <polygon class="logo-bars" points="305,68 340,68 435,408 400,408"/>
+  
+  <!-- Intelligence Amplifier Text -->
+  <text class="logo-text" x="85" y="460">Intelligence Amplifier</text>
+  <text class="trademark" x="438" y="440">®</text>
+</svg>
+
+
+
