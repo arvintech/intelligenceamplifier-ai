@@ -23,3 +23,5 @@ Upload your book cover images to this directory.
 - Falls back to gradient placeholders if image is not found
 - All images are optimized with Next.js Image component
 
+
+

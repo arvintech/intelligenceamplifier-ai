@@ -141,6 +141,193 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Book Series Section */}
+      <section id="books" className="py-32 relative bg-[#f5f5f7] dark:bg-[#000000]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] dark:text-white mb-6 tracking-tight drop-shadow-md">
+              Our Book Series
+            </h2>
+            <p className="text-xl text-[#1d1d1f] dark:text-white max-w-3xl mx-auto leading-relaxed font-medium">
+              Explore our published book series that amplify human intelligence and reimagine literature
+            </p>
+          </div>
+
+          <div className="space-y-20">
+            {/* Intelligence Amplifier Series */}
+            <div className="glass-card rounded-[32px] p-10 sm:p-14 transition-all duration-500 hover:scale-[1.01] shadow-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+                {/* Series Info */}
+                <div className="lg:col-span-2 space-y-6">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 rounded-[16px] bg-[#007AFF] dark:bg-[#0A84FF] flex items-center justify-center shadow-md">
+                      <span className="text-3xl">📚</span>
+                    </div>
+                    <div>
+                      <h3 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">
+                        Intelligence Amplifier Series
+                      </h3>
+                      <p className="text-lg font-semibold text-[#007AFF] dark:text-[#0A84FF] italic">
+                        Attitudes Towards AI
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-lg text-[#1d1d1f] dark:text-white leading-relaxed font-medium">
+                    A groundbreaking series exploring our evolving relationship with artificial intelligence. From Silicon Valley's innovation culture to the philosophical depths of human spirit, each book offers a unique lens to examine our AI-augmented future.
+                  </p>
+                  
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-bold text-[#1d1d1f]/70 dark:text-white/70 uppercase tracking-wide">
+                      Books in the Series
+                    </h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
+                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
+                        <span className="font-medium">San Francisco - AI Capital of The World</span>
+                      </li>
+                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
+                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
+                        <span className="font-medium">Alarming Rise of Stupidity Amplified</span>
+                      </li>
+                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
+                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
+                        <span className="font-medium">The Amplified Human Spirit</span>
+                      </li>
+                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
+                        <span className="text-[#007AFF] dark:text-[#0A84FF]">→</span>
+                        <span className="font-medium italic">Amplified Nietzsche (Coming Soon)</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="pt-6">
+                    <Link href="/intelligence-amplifier-series">
+                      <button className="px-8 py-4 bg-[#007AFF] dark:bg-[#0A84FF] text-white rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg">
+                        Explore the Series
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+                
+                {/* Book Covers */}
+                <div className="lg:col-span-3 flex justify-center lg:justify-end px-4 sm:px-6 lg:px-8">
+                  <div className="w-full max-w-4xl">
+                    <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-6 sm:mb-8 lg:mb-10">
+                      <div className="aspect-[2/3] rounded-[24px] overflow-hidden shadow-2xl hover:scale-[1.05] transition-all duration-300 relative">
+                        <Image
+                          src="/book-covers/san-francisco-ai-capital.jpg.webp"
+                          alt="San Francisco - AI Capital of The World"
+                          width={500}
+                          height={750}
+                          className="object-contain w-full h-full"
+                        />
+                      </div>
+                      <div className="aspect-[2/3] rounded-[24px] overflow-hidden shadow-2xl hover:scale-[1.05] transition-all duration-300 relative">
+                        <Image
+                          src="/book-covers/alarming-rise-stupidity-amplified.jpg.webp"
+                          alt="Alarming Rise of Stupidity Amplified"
+                          width={500}
+                          height={750}
+                          className="object-contain w-full h-full"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex justify-center">
+                      <div className="w-1/2 px-3 sm:px-4 lg:px-5">
+                        <div className="aspect-[2/3] rounded-[24px] overflow-hidden shadow-2xl hover:scale-[1.05] transition-all duration-300 relative">
+                          <Image
+                            src="/book-covers/amplified-human-spirit.jpg.webp"
+                            alt="The Amplified Human Spirit"
+                            width={500}
+                            height={750}
+                            className="object-contain w-full h-full"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Amplified Classics */}
+            <div className="glass-card rounded-[32px] p-10 sm:p-14 transition-all duration-500 hover:scale-[1.01] shadow-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+                {/* Series Info */}
+                <div className="lg:col-span-2 space-y-6">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 rounded-[16px] bg-[#AF52DE] dark:bg-[#BF5AF2] flex items-center justify-center shadow-md">
+                      <span className="text-3xl">📖</span>
+                    </div>
+                    <div>
+                      <h3 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">
+                        Amplified Classics
+                      </h3>
+                      <p className="text-lg font-semibold text-[#AF52DE] dark:text-[#BF5AF2] italic">
+                        Rediscover the Living Soul of Literature
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-lg text-[#1d1d1f] dark:text-white leading-relaxed font-medium">
+                    Experience timeless literature through Intelligence Amplification. Classic novels enriched with dynamic annotations, contextual essays, and reflective dialogues that deepen understanding and connection.
+                  </p>
+                  
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-bold text-[#1d1d1f]/70 dark:text-white/70 uppercase tracking-wide">
+                      Available Titles
+                    </h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
+                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
+                        <span className="font-medium">Pride and Prejudice</span>
+                      </li>
+                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
+                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
+                        <span className="font-medium">Sense and Sensibility</span>
+                      </li>
+                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
+                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
+                        <span className="font-medium">Jane Eyre</span>
+                      </li>
+                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
+                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
+                        <span className="font-medium">Wuthering Heights</span>
+                      </li>
+                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
+                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
+                        <span className="font-medium">A Room with a View</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="pt-6">
+                    <Link href="/amplified-classics">
+                      <button className="px-8 py-4 bg-[#AF52DE] dark:bg-[#BF5AF2] text-white rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg">
+                        Explore Amplified Classics
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+                
+                {/* Visual Element */}
+                <div className="lg:col-span-3 flex justify-center lg:justify-end">
+                  <div className="relative h-[450px] sm:h-[550px] lg:h-[600px] w-full max-w-2xl rounded-[28px] overflow-hidden bg-gradient-to-br from-[#AF52DE]/20 via-[#BF5AF2]/20 to-[#FF2D55]/20 dark:from-[#AF52DE]/30 dark:via-[#BF5AF2]/30 dark:to-[#FF2D55]/30 flex items-center justify-center shadow-2xl hover:scale-[1.02] transition-all duration-500">
+                    <div className="text-center space-y-8 p-10">
+                      <div className="text-8xl sm:text-9xl opacity-60 animate-float-slow">📚</div>
+                      <p className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] dark:text-white leading-tight drop-shadow-md">
+                        Classic Literature,<br />Amplified for Modern Readers
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section id="projects" className="py-32 relative bg-[#f5f5f7] dark:bg-[#000000]">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">

@@ -372,3 +372,5 @@ import { truncateForMeta, generateSlug } from '@/lib/seo-utils';
 **For**: Intelligence Amplifier™  
 **Status**: ✅ Ready to Use
 
+
+
