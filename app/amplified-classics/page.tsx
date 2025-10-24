@@ -51,7 +51,7 @@ export default function AmplifiedClassics() {
               
               <div className="space-y-6 text-lg sm:text-xl text-[#1d1d1f] dark:text-white leading-relaxed font-medium max-w-4xl mx-auto">
                 <p>
-                  <span className="font-bold">Amplified Classics</span> invites readers to experience the timeless power of the world's great novels through the lens of <span className="font-bold text-[#AF52DE] dark:text-[#BF5AF2]">Intelligence Amplification</span> — where human insight meets reflective AI commentary.
+                  <span className="font-bold">Amplified Classics</span> invites readers to experience the timeless power of the world&apos;s great novels through the lens of <span className="font-bold text-[#AF52DE] dark:text-[#BF5AF2]">Intelligence Amplification</span> — where human insight meets reflective AI commentary.
                 </p>
                 <p>
                   Each title in the collection blends original text with <span className="font-semibold">dynamic annotations</span>, <span className="font-semibold">contextual essays</span>, <span className="font-semibold">teaching prompts</span>, and <span className="font-semibold">reflective dialogues</span> that awaken new dimensions of meaning for modern readers, educators, and thinkers.

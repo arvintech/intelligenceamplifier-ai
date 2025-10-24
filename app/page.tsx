@@ -63,7 +63,7 @@ export default function Home() {
                 </p>
                 <div className="py-6 mt-4 border-t border-[#1d1d1f]/10 dark:border-white/10">
                   <p className="text-2xl sm:text-3xl font-medium italic text-[#1d1d1f] dark:text-white leading-snug">
-                    "What happens when intelligence is not substituted, but multiplied?"
+                    &quot;What happens when intelligence is not substituted, but multiplied?&quot;
                   </p>
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default function Home() {
               Our Projects
             </h2>
             <p className="text-xl text-[#1d1d1f] dark:text-white max-w-3xl mx-auto leading-relaxed font-medium">
-              Explore how we're applying Intelligence Amplification to real-world challenges
+              Explore how we&apos;re applying Intelligence Amplification to real-world challenges
             </p>
           </div>
 

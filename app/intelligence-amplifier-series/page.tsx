@@ -190,7 +190,7 @@ export default function IntelligenceAmplifierSeries() {
                 The Series Philosophy
               </h2>
               <p className="text-lg sm:text-xl text-white leading-relaxed font-medium drop-shadow-md">
-                The Intelligence Amplifier Series challenges conventional wisdom about artificial intelligence. Rather than viewing AI as a replacement for human intelligence, these books explore how AI can <span className="font-bold border-b-2 border-white/70">amplify</span> human capability, <span className="font-bold border-b-2 border-white/70">enhance</span> our understanding, and <span className="font-bold border-b-2 border-white/70">expand</span> the boundaries of what's possible when human insight meets machine intelligence.
+                The Intelligence Amplifier Series challenges conventional wisdom about artificial intelligence. Rather than viewing AI as a replacement for human intelligence, these books explore how AI can <span className="font-bold border-b-2 border-white/70">amplify</span> human capability, <span className="font-bold border-b-2 border-white/70">enhance</span> our understanding, and <span className="font-bold border-b-2 border-white/70">expand</span> the boundaries of what&apos;s possible when human insight meets machine intelligence.
               </p>
               <p className="text-lg sm:text-xl text-white leading-relaxed font-medium drop-shadow-md pt-4">
                 Each book offers a unique lens through which to examine our AI-augmented future, from the innovation capitals of Silicon Valley to the philosophical depths of human spirit and thought.

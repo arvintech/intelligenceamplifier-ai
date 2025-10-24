@@ -46,7 +46,7 @@ export default function AmplifiedNietzsche() {
                   Intelligence Amplifier Series - Book 4
                 </p>
                 <p className="text-lg text-[#1d1d1f] dark:text-white leading-relaxed font-medium">
-                  A philosophical tour de force that brings Nietzsche's profound insights into dialogue with artificial intelligence.
+                  A philosophical tour de force that brings Nietzsche&apos;s profound insights into dialogue with artificial intelligence.
                 </p>
               </div>
             </div>
