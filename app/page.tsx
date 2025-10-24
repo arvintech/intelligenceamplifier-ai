@@ -2,10 +2,22 @@ import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import StructuredData from '@/components/StructuredData';
+import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo';
 
 export default function Home() {
+  // Generate structured data for SEO
+  const organizationSchema = generateOrganizationSchema();
+  const webPageSchema = generateWebPageSchema({
+    title: 'Intelligence Amplifier™ - AI-Powered Intelligence Enhancement',
+    description: 'Amplify your intelligence with cutting-edge AI technology.',
+    url: '/',
+    image: '/IA-logo.png',
+  });
+
   return (
     <>
+      <StructuredData data={[organizationSchema, webPageSchema]} />
       <Navigation />
       <main className="min-h-screen bg-[#f5f5f7] dark:bg-[#000000] pt-16">
       {/* Hero Section */}

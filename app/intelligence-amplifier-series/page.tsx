@@ -3,15 +3,29 @@ import Navigation from '@/components/Navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import StructuredData from '@/components/StructuredData';
+import { generateSEO, generateBreadcrumbSchema } from '@/lib/seo';
+import { KEYWORD_SETS } from '@/lib/seo-constants';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateSEO({
   title: 'Intelligence Amplifier Series - Attitudes Towards AI',
   description: 'A groundbreaking book series exploring our evolving relationship with artificial intelligence, from Silicon Valley to philosophical depths.',
-};
+  keywords: KEYWORD_SETS.books,
+  url: '/intelligence-amplifier-series',
+  type: 'website',
+  image: '/book-covers/san-francisco-ai-capital.jpg.webp',
+});
 
 export default function IntelligenceAmplifierSeries() {
+  // Generate breadcrumb structured data for SEO
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Intelligence Amplifier Series', url: '/intelligence-amplifier-series' },
+  ]);
+
   return (
     <>
+      <StructuredData data={breadcrumbSchema} />
       <Navigation />
       <main className="min-h-screen bg-[#f5f5f7] dark:bg-[#000000] pt-16">
       {/* Hero Section */}
@@ -219,7 +233,8 @@ const books = [
     statusBg: "bg-[#34C759]/10 dark:bg-[#30D158]/20",
     statusText: "text-[#34C759] dark:text-[#30D158]",
     available: true,
-    readOnlineUrl: "/intelligence-amplifier-series/san-francisco-ai-capital",
+    readOnlineUrl: "/books/san-francisco-ai-capital",
+    bookInfoUrl: "/intelligence-amplifier-series/san-francisco-ai-capital",
     amazonUrl: "https://www.amazon.com/San-Francisco-Capital-Intelligence-Amplifier/dp/B0FHGCHVL1"
   },
   {
@@ -234,7 +249,8 @@ const books = [
     statusBg: "bg-[#34C759]/10 dark:bg-[#30D158]/20",
     statusText: "text-[#34C759] dark:text-[#30D158]",
     available: true,
-    readOnlineUrl: "/intelligence-amplifier-series/alarming-rise-stupidity-amplified",
+    readOnlineUrl: "/books/alarming-rise-stupidity-amplified",
+    bookInfoUrl: "/intelligence-amplifier-series/alarming-rise-stupidity-amplified",
     amazonUrl: "https://www.amazon.com/Alarming-Stupidity-Amplified-Intelligence-Amplifier/dp/B0FHGGT5HD"
   },
   {
@@ -249,7 +265,8 @@ const books = [
     statusBg: "bg-[#34C759]/10 dark:bg-[#30D158]/20",
     statusText: "text-[#34C759] dark:text-[#30D158]",
     available: true,
-    readOnlineUrl: "/intelligence-amplifier-series/amplified-human-spirit",
+    readOnlineUrl: "/books/amplified-human-spirit",
+    bookInfoUrl: "/intelligence-amplifier-series/amplified-human-spirit",
     amazonUrl: "https://www.amazon.com/Amplified-Human-Spirit-Intelligence-Amplifier/dp/B0FHGC4YT1"
   },
   {
