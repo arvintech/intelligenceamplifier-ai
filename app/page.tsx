@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import StructuredData from '@/components/StructuredData';
 import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo';
+import { BookStack, BookOpen, Rocket, Dice, Rice, Brain } from '@/components/icons';
 
 export default function Home() {
   // Generate structured data for SEO
@@ -161,7 +162,7 @@ export default function Home() {
                 <div className="lg:col-span-2 space-y-6">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-16 h-16 rounded-[16px] bg-[#007AFF] dark:bg-[#0A84FF] flex items-center justify-center shadow-md">
-                      <span className="text-3xl">📚</span>
+                      <BookStack className="w-8 h-8 text-white" />
                     </div>
                     <div>
                       <h3 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">
@@ -258,7 +259,7 @@ export default function Home() {
                 <div className="lg:col-span-2 space-y-6">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-16 h-16 rounded-[16px] bg-[#AF52DE] dark:bg-[#BF5AF2] flex items-center justify-center shadow-md">
-                      <span className="text-3xl">📖</span>
+                      <BookOpen className="w-8 h-8 text-white" />
                     </div>
                     <div>
                       <h3 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">
@@ -315,7 +316,9 @@ export default function Home() {
                 <div className="lg:col-span-3 flex justify-center lg:justify-end">
                   <div className="relative h-[450px] sm:h-[550px] lg:h-[600px] w-full max-w-2xl rounded-[28px] overflow-hidden bg-gradient-to-br from-[#AF52DE]/20 via-[#BF5AF2]/20 to-[#FF2D55]/20 dark:from-[#AF52DE]/30 dark:via-[#BF5AF2]/30 dark:to-[#FF2D55]/30 flex items-center justify-center shadow-2xl hover:scale-[1.02] transition-all duration-500">
                     <div className="text-center space-y-8 p-10">
-                      <div className="text-8xl sm:text-9xl opacity-60 animate-float-slow">📚</div>
+                      <div className="flex justify-center opacity-60 animate-float-slow">
+                        <BookOpen className="w-32 h-32 sm:w-40 sm:h-40 text-[#AF52DE] dark:text-[#BF5AF2]" />
+                      </div>
                       <p className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] dark:text-white leading-tight drop-shadow-md">
                         Classic Literature,<br />Amplified for Modern Readers
                       </p>
@@ -342,11 +345,12 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => {
+              const IconComponent = project.icon;
               const CardContent = (
                 <div className="glass-card rounded-[24px] p-8 h-full transition-all duration-500 hover:scale-[1.02] shadow-lg">
                   <div className="space-y-4">
                     <div className={`w-16 h-16 rounded-[16px] ${project.iconBg} flex items-center justify-center mb-6 shadow-md`}>
-                      <span className="text-3xl">{project.icon}</span>
+                      <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">
                       {project.title}
@@ -439,7 +443,7 @@ export default function Home() {
 
 const projects = [
   {
-    icon: "📚",
+    icon: BookStack,
     iconBg: "bg-[#007AFF] dark:bg-[#0A84FF]",
     title: "Intelligence Amplifier Series",
     subtitle: "Attitudes towards AI",
@@ -450,7 +454,7 @@ const projects = [
     link: "/intelligence-amplifier-series"
   },
   {
-    icon: "📖",
+    icon: BookOpen,
     iconBg: "bg-[#AF52DE] dark:bg-[#BF5AF2]",
     title: "Amplified Classics",
     subtitle: "Rediscover the Living Soul of Literature",
@@ -461,7 +465,7 @@ const projects = [
     link: "/amplified-classics"
   },
   {
-    icon: "🚀",
+    icon: Brain,
     iconBg: "bg-[#34C759] dark:bg-[#30D158]",
     title: "Arvintech",
     subtitle: "An Innovative Attitude to AI—Collaboration",
@@ -471,7 +475,7 @@ const projects = [
     statusText: "text-[#34C759] dark:text-[#30D158]"
   },
   {
-    icon: "🎲",
+    icon: Dice,
     iconBg: "bg-[#FF9500] dark:bg-[#FF9F0A]",
     title: "Lottery Predictor",
     subtitle: "Statistical Analysis & Pattern Recognition",
@@ -481,7 +485,7 @@ const projects = [
     statusText: "text-[#FF9500] dark:text-[#FF9F0A]"
   },
   {
-    icon: "🍚",
+    icon: Rice,
     iconBg: "bg-[#FF2D55] dark:bg-[#FF375F]",
     title: "Global Rice",
     subtitle: "An Amplified Global Farm to Kitchen Table Cookbook",

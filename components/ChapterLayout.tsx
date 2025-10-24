@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { ArrowLeft, ArrowRight, BookStack, Headphones } from './icons';
 
 interface ChapterLayoutProps {
   chapterNum: number;
@@ -45,9 +46,10 @@ export default function ChapterLayout({
           <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
             <Link 
               href={`/books/${bookSlug}`}
-              className="inline-block mb-6 text-[#007AFF] dark:text-[#0A84FF] hover:underline font-medium"
+              className="inline-flex items-center gap-2 mb-6 text-[#007AFF] dark:text-[#0A84FF] hover:bg-[#007AFF]/10 dark:hover:bg-[#0A84FF]/10 px-3 py-2 rounded-lg font-medium transition-all duration-200"
             >
-              ← Back to {bookTitle}
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to {bookTitle}</span>
             </Link>
 
             <div className="glass-card rounded-[20px] p-6 sm:p-8">
@@ -65,10 +67,7 @@ export default function ChapterLayout({
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-[#AF52DE]/20 dark:bg-[#BF5AF2]/20 flex items-center justify-center">
-                      <svg className="w-6 h-6 text-[#AF52DE] dark:text-[#BF5AF2]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 3v18m0-18a9 9 0 019 9 9 9 0 01-9 9m0-18a9 9 0 00-9 9 9 9 0 009 9m0 0v-2m0 2h-2m2 0h2" />
-                        <path d="M8 10v4m4-4v4m4-4v4" />
-                      </svg>
+                      <Headphones className="w-6 h-6 text-[#AF52DE] dark:text-[#BF5AF2]" />
                     </div>
                     <div>
                       <div className="font-semibold text-[#1d1d1f] dark:text-white">
@@ -81,9 +80,10 @@ export default function ChapterLayout({
                   </div>
                   <button
                     disabled
-                    className="px-6 py-2 bg-[#1d1d1f]/10 dark:bg-white/10 text-[#1d1d1f]/50 dark:text-white/50 rounded-full font-semibold cursor-not-allowed"
+                    className="flex items-center gap-2 px-6 py-2 bg-[#1d1d1f]/10 dark:bg-white/10 text-[#1d1d1f]/50 dark:text-white/50 rounded-full font-semibold cursor-not-allowed"
                   >
-                    🎧 Listen
+                    <Headphones className="w-4 h-4" />
+                    <span>Listen</span>
                   </button>
                 </div>
               </div>
@@ -137,8 +137,9 @@ export default function ChapterLayout({
               {prevChapter ? (
                 <Link href={`/books/${bookSlug}/${prevChapter.slug}`}>
                   <div className="glass-card rounded-[20px] p-6 h-full hover:scale-[1.02] transition-all duration-300 group">
-                    <div className="text-sm text-[#1d1d1f]/70 dark:text-white/70 mb-2">
-                      ← Previous
+                    <div className="flex items-center gap-2 text-sm text-[#1d1d1f]/70 dark:text-white/70 mb-2">
+                      <ArrowLeft className="w-4 h-4" />
+                      <span>Previous</span>
                     </div>
                     <div className="font-semibold text-[#1d1d1f] dark:text-white group-hover:text-[#007AFF] dark:group-hover:text-[#0A84FF] transition-colors">
                       {prevChapter.title}
@@ -152,8 +153,9 @@ export default function ChapterLayout({
               {nextChapter && (
                 <Link href={`/books/${bookSlug}/${nextChapter.slug}`}>
                   <div className="glass-card rounded-[20px] p-6 h-full hover:scale-[1.02] transition-all duration-300 group text-right">
-                    <div className="text-sm text-[#1d1d1f]/70 dark:text-white/70 mb-2">
-                      Next →
+                    <div className="flex items-center justify-end gap-2 text-sm text-[#1d1d1f]/70 dark:text-white/70 mb-2">
+                      <span>Next</span>
+                      <ArrowRight className="w-4 h-4" />
                     </div>
                     <div className="font-semibold text-[#1d1d1f] dark:text-white group-hover:text-[#007AFF] dark:group-hover:text-[#0A84FF] transition-colors">
                       {nextChapter.title}
@@ -167,9 +169,10 @@ export default function ChapterLayout({
             <div className="mt-8 text-center">
               <Link 
                 href={`/books/${bookSlug}`}
-                className="inline-block px-8 py-4 bg-[#007AFF] dark:bg-[#0A84FF] text-white rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#007AFF] dark:bg-[#0A84FF] text-white rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
               >
-                📚 Back to Table of Contents
+                <BookStack className="w-5 h-5" />
+                <span>Back to Table of Contents</span>
               </Link>
             </div>
           </div>

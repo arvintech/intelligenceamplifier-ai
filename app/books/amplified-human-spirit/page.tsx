@@ -94,13 +94,13 @@ export default function AmplifiedHumanSpiritBookPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
               {/* Book Cover */}
               <div className="lg:col-span-1">
-                <div className="sticky top-24">
-                  <div className="aspect-[2/3] rounded-[20px] overflow-hidden shadow-2xl relative">
+                <div className="sticky top-24 px-4 sm:px-6 lg:px-8">
+                  <div className="aspect-square rounded-[20px] overflow-hidden shadow-2xl relative mx-auto max-w-2xl bg-white dark:bg-gray-100">
                     <Image
                       src="/book-covers/amplified-human-spirit.jpg.webp"
                       alt="The Amplified Human Spirit Book Cover"
                       fill
-                      className="object-cover"
+                      className="object-contain"
                       priority
                     />
                   </div>
@@ -109,12 +109,12 @@ export default function AmplifiedHumanSpiritBookPage() {
                   <a
                     href="/books/Amplified Human Spirit kdp Hard 9.20.18 PM.pdf"
                     download
-                    className="mt-6 block w-full px-6 py-4 bg-[#AF52DE] dark:bg-[#BF5AF2] text-white text-center rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
+                    className="mt-6 block w-full px-6 py-4 bg-[#AF52DE] dark:bg-[#BF5AF2] text-white text-center rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg max-w-2xl mx-auto"
                   >
                     📥 Download PDF
                   </a>
                   
-                  <div className="mt-4 text-center text-sm text-[#1d1d1f]/70 dark:text-white/70">
+                  <div className="mt-4 text-center text-sm text-[#1d1d1f]/70 dark:text-white/70 max-w-2xl mx-auto">
                     207 pages • PDF format
                   </div>
                 </div>
