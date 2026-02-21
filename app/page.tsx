@@ -4,1185 +4,937 @@ import Image from 'next/image';
 import Link from 'next/link';
 import StructuredData from '@/components/StructuredData';
 import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo';
-import { BookStack, BookOpen, Rocket, Dice, Rice, Brain, Edit, Users, FileText, Map, MessageCircle, RefreshCw, GraduationCap, Lightbulb, Target, Globe, Clock, Eye } from '@/components/icons';
+import { Brain, FileText, Users, RefreshCw, Rocket, Lightbulb, Target, Sparkles, Shield, Globe, Clock, Megaphone, TrendingUp, Eye, HeartPulse, Scale, Building, DollarSign, Cog, ShoppingBag, GraduationCap, Map, Landmark } from '@/components/icons';
+import ArvinTechLink from '@/components/ArvinTechLink';
+
+const industries = [
+  {
+    icon: HeartPulse,
+    color: 'bg-[#FF2D55] dark:bg-[#FF375F]',
+    dotColor: 'bg-[#FF2D55] dark:bg-[#FF375F]',
+    name: 'Healthcare',
+    link: '/industries/healthcare',
+    applications: [
+      'Patient record summarization & retrieval',
+      'Clinical documentation automation',
+      'Compliance policy Q&A assistant',
+      'Insurance pre-authorization drafting',
+    ],
+  },
+  {
+    icon: Landmark,
+    color: 'bg-[#5856D6] dark:bg-[#5E5CE6]',
+    dotColor: 'bg-[#5856D6] dark:bg-[#5E5CE6]',
+    name: 'Local Government',
+    link: '/industries/local-government',
+    applications: [
+      'Citizen inquiry & permit Q&A assistant',
+      'Policy document search & retrieval',
+      'Council meeting minutes summarization',
+      'Regulatory compliance automation',
+    ],
+  },
+  {
+    icon: DollarSign,
+    color: 'bg-[#34C759] dark:bg-[#30D158]',
+    dotColor: 'bg-[#34C759] dark:bg-[#30D158]',
+    name: 'Finance',
+    link: '/industries/finance',
+    applications: [
+      'Financial report analysis & summaries',
+      'Risk & compliance document Q&A',
+      'Investment memo generation',
+      'Audit trail documentation support',
+    ],
+  },
+  {
+    icon: Building,
+    color: 'bg-[#FF9500] dark:bg-[#FF9F0A]',
+    dotColor: 'bg-[#FF9500] dark:bg-[#FF9F0A]',
+    name: 'Real Estate',
+    applications: [
+      'Property listing & document analysis',
+      'Client communication drafting',
+      'Lease agreement review & summaries',
+      'Market report intelligence retrieval',
+    ],
+  },
+  {
+    icon: Cog,
+    color: 'bg-[#007AFF] dark:bg-[#0A84FF]',
+    dotColor: 'bg-[#007AFF] dark:bg-[#0A84FF]',
+    name: 'Manufacturing',
+    applications: [
+      'Operations manual search & retrieval',
+      'Quality control report automation',
+      'Supply chain document processing',
+      'Safety compliance knowledge base',
+    ],
+  },
+  {
+    icon: GraduationCap,
+    color: 'bg-[#AF52DE] dark:bg-[#BF5AF2]',
+    dotColor: 'bg-[#AF52DE] dark:bg-[#BF5AF2]',
+    name: 'Education',
+    applications: [
+      'Curriculum & policy document assistant',
+      'Student support knowledge base',
+      'Administrative workflow automation',
+      'Faculty research summarization',
+    ],
+  },
+  {
+    icon: ShoppingBag,
+    color: 'bg-[#FF2D55] dark:bg-[#FF375F]',
+    dotColor: 'bg-[#FF2D55] dark:bg-[#FF375F]',
+    name: 'Retail & E-Commerce',
+    applications: [
+      'Product description generation at scale',
+      'Customer service AI assistant',
+      'Inventory & supplier document analysis',
+      'Return policy & FAQ automation',
+    ],
+  },
+  {
+    icon: Map,
+    color: 'bg-[#34C759] dark:bg-[#30D158]',
+    dotColor: 'bg-[#34C759] dark:bg-[#30D158]',
+    name: 'Professional Services',
+    applications: [
+      'Proposal & SOW drafting assistant',
+      'Project knowledge base & retrieval',
+      'Client onboarding document automation',
+      'Internal methodology Q&A system',
+    ],
+  },
+];
+
+const features = [
+  {
+    icon: Brain,
+    color: 'bg-[#007AFF] dark:bg-[#0A84FF]',
+    title: 'AI Trained on Your Documents',
+    description:
+      'Deploy an AI assistant exclusively trained on your internal knowledge base, policies, and operational data.',
+  },
+  {
+    icon: FileText,
+    color: 'bg-[#AF52DE] dark:bg-[#BF5AF2]',
+    title: 'Instant Document Analysis',
+    description:
+      'Automatically analyze reports, emails, and files to surface insights without manual review.',
+  },
+  {
+    icon: RefreshCw,
+    color: 'bg-[#34C759] dark:bg-[#30D158]',
+    title: 'Workflow Automation',
+    description:
+      'Automate repetitive business processes integrated with your existing systems and tools.',
+  },
+  {
+    icon: Lightbulb,
+    color: 'bg-[#FF9500] dark:bg-[#FF9F0A]',
+    title: 'Intelligent Knowledge Retrieval',
+    description:
+      'Employees instantly retrieve information, policies, and operational guidance in seconds.',
+  },
+  {
+    icon: Target,
+    color: 'bg-[#FF2D55] dark:bg-[#FF375F]',
+    title: 'Improved Decision Support',
+    description:
+      'AI-assisted insights that enhance human decision-making rather than replacing it.',
+  },
+  {
+    icon: Megaphone,
+    color: 'bg-[#5856D6] dark:bg-[#5E5CE6]',
+    title: 'AI Marketing & Remarketing',
+    description:
+      'Target the right audiences, personalize outreach, and run AI-powered remarketing campaigns that convert.',
+  },
+];
+
+const useCases = [
+  {
+    icon: Brain,
+    color: 'bg-[#007AFF] dark:bg-[#0A84FF]',
+    title: 'Internal Knowledge Assistant',
+    description: "Deploy an AI assistant trained on your company's internal knowledge base.",
+    detail: 'Employees can instantly retrieve information, policies, and operational guidance.',
+  },
+  {
+    icon: FileText,
+    color: 'bg-[#AF52DE] dark:bg-[#BF5AF2]',
+    title: 'Document Analysis and Automation',
+    description: 'Automatically analyze contracts, reports, and business documents.',
+    detail: 'Reduce manual review and accelerate workflows.',
+  },
+  {
+    icon: Users,
+    color: 'bg-[#34C759] dark:bg-[#30D158]',
+    title: 'Customer Communication Support',
+    description:
+      'Deploy AI to assist in drafting responses, analyzing inquiries, and improving customer interactions.',
+    detail: 'Faster response times and consistent communication quality.',
+  },
+  {
+    icon: RefreshCw,
+    color: 'bg-[#FF9500] dark:bg-[#FF9F0A]',
+    title: 'Workflow Automation',
+    description:
+      'Automate repetitive business processes using AI integrated with your systems.',
+    detail: 'Reduce operational overhead and improve efficiency.',
+  },
+  {
+    icon: Megaphone,
+    color: 'bg-[#5856D6] dark:bg-[#5E5CE6]',
+    title: 'AI Marketing & Remarketing',
+    description:
+      'Run AI-powered marketing campaigns starting with your AI-featured website as the conversion hub.',
+    detail:
+      'Target specific audiences, retarget website visitors, and automate marketing activities that drive revenue.',
+  },
+];
+
+const steps = [
+  {
+    icon: Rocket,
+    color: 'bg-[#007AFF] dark:bg-[#0A84FF]',
+    title: 'Deployment',
+    description: <><ArvinTechLink /> deploys IntelligenceAmplifier.AI securely within your organization.</>,
+  },
+  {
+    icon: Lightbulb,
+    color: 'bg-[#AF52DE] dark:bg-[#BF5AF2]',
+    title: 'Training',
+    description: 'The system is trained on your internal documents and operational knowledge.',
+  },
+  {
+    icon: Target,
+    color: 'bg-[#34C759] dark:bg-[#30D158]',
+    title: 'Integration',
+    description: 'The platform integrates with your workflows and business systems.',
+  },
+  {
+    icon: Sparkles,
+    color: 'bg-[#FF9500] dark:bg-[#FF9F0A]',
+    title: 'Amplification',
+    description: 'Your organization gains continuous AI-assisted operational intelligence.',
+  },
+];
+
+const benefits = [
+  {
+    icon: Shield,
+    title: 'Secure and Private Deployment',
+    description:
+      "Deployed securely within your organization's infrastructure with full data privacy.",
+  },
+  {
+    icon: Brain,
+    title: 'Trained on Your Data',
+    description:
+      "Exclusively trained on your organization's documents, not generic public data.",
+  },
+  {
+    icon: Target,
+    title: 'System Integration',
+    description: 'Integrates seamlessly with your existing business workflows and tools.',
+  },
+  {
+    icon: Globe,
+    title: 'Scalable',
+    description: 'Scales across your entire organization as your needs grow.',
+  },
+  {
+    icon: Rocket,
+    title: <><ArvinTechLink className="text-lg" /> Supported</>,
+    description: <>Deployed, integrated, and managed by <ArvinTechLink />&apos;s experienced team.</>,
+  },
+  {
+    icon: Clock,
+    title: 'Operational Efficiency',
+    description: 'Reduces time spent on repetitive tasks and manual information retrieval.',
+  },
+];
+
+const marketingFeatures = [
+  {
+    icon: Globe,
+    color: 'bg-[#007AFF] dark:bg-[#0A84FF]',
+    title: 'AI-Featured Website',
+    description:
+      'Your website becomes an AI-powered conversion hub — personalizing content for each visitor and capturing intent signals in real time.',
+  },
+  {
+    icon: Target,
+    color: 'bg-[#5856D6] dark:bg-[#5E5CE6]',
+    title: 'Precision Audience Targeting',
+    description:
+      'AI analyzes behavioral data, firmographics, and intent signals to identify and target high-value prospects with pinpoint accuracy.',
+  },
+  {
+    icon: TrendingUp,
+    color: 'bg-[#34C759] dark:bg-[#30D158]',
+    title: 'Remarketing Automation',
+    description:
+      'Automatically re-engage website visitors, past leads, and customers with personalized AI-driven campaigns across channels.',
+  },
+];
+
+const marketingSteps = [
+  {
+    title: 'Identify Targets',
+    description:
+      'AI profiles your ideal customers using your CRM data, website analytics, and market signals.',
+  },
+  {
+    title: 'Personalize Messaging',
+    description:
+      'Generate tailored outreach, ad copy, and landing page content for each audience segment.',
+  },
+  {
+    title: 'Launch Campaigns',
+    description:
+      'Deploy AI-assisted campaigns across email, paid media, and your website simultaneously.',
+  },
+  {
+    title: 'Remarket & Convert',
+    description:
+      'Automatically follow up with engaged prospects through remarketing sequences that close deals.',
+  },
+];
+
+const pricingTiers = [
+  {
+    name: 'Starter Deployment',
+    price: '200',
+    tagline: 'Ideal for small teams',
+    featured: false,
+    features: [
+      'Internal AI assistant deployment',
+      'Trained on up to 500 documents',
+      'Basic workflow integration',
+      'Email support',
+      'Monthly performance review',
+    ],
+  },
+  {
+    name: 'Professional Deployment',
+    price: '500',
+    tagline: 'Full internal AI assistant deployment',
+    featured: true,
+    features: [
+      'Full internal AI assistant deployment',
+      'Unlimited document training',
+      'Advanced workflow automation',
+      'Priority support',
+      'Quarterly optimization review',
+      'Custom knowledge domains',
+    ],
+  },
+  {
+    name: 'Enterprise Deployment',
+    price: '1,500',
+    tagline: 'Organization-wide deployment with advanced integration',
+    featured: false,
+    features: [
+      'Organization-wide deployment',
+      'Advanced system integrations',
+      'Custom AI model configuration',
+      'Dedicated ArvinTech support',
+      'Monthly strategic review',
+      'SLA guarantees',
+    ],
+  },
+];
 
 export default function Home() {
-  // Generate structured data for SEO
   const organizationSchema = generateOrganizationSchema();
   const webPageSchema = generateWebPageSchema({
-    title: 'Intelligence Amplifier™ - AI-Powered Intelligence Enhancement',
-    description: 'Amplify your intelligence with cutting-edge AI technology.',
+    title: 'IntelligenceAmplifier.AI — Deploy AI That Amplifies Your Organization',
+    description:
+      "IntelligenceAmplifier.AI is a deployable AI platform that integrates with your organization's documents, systems, and workflows to automate analysis, enhance decision-making, and increase operational efficiency.",
     url: '/',
     image: '/IA-logo.png',
   });
 
-  // Amplified Classics Collection Schema
-  const amplifiedClassicsSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'Amplified Classics Collection',
-    description: 'Classic literature enriched with Intelligence Amplification - dynamic annotations, contextual essays, and reflective dialogues',
-    itemListElement: [
-      {
-        '@type': 'Book',
-        position: 1,
-        name: 'Pride and Prejudice - Amplified',
-        author: { '@type': 'Person', name: 'Jane Austen' },
-        genre: 'Classic Literature',
-        description: 'Jane Austen\'s masterpiece enriched with modern insights on perception, pride, and emotional intelligence',
-      },
-      {
-        '@type': 'Book',
-        position: 2,
-        name: 'Sense and Sensibility - Amplified',
-        author: { '@type': 'Person', name: 'Jane Austen' },
-        genre: 'Classic Literature',
-        description: 'A study in balance between reason and feeling with modern perspectives on emotional regulation',
-      },
-      {
-        '@type': 'Book',
-        position: 3,
-        name: 'Jane Eyre - Amplified',
-        author: { '@type': 'Person', name: 'Charlotte Brontë' },
-        genre: 'Classic Literature',
-        description: 'Charlotte Brontë\'s fierce heroine explored through frameworks of autonomy and moral courage',
-      },
-      {
-        '@type': 'Book',
-        position: 4,
-        name: 'Wuthering Heights - Amplified',
-        author: { '@type': 'Person', name: 'Emily Brontë' },
-        genre: 'Classic Literature',
-        description: 'Emily Brontë\'s haunting exploration of passion as a psychological study of love\'s extremes',
-      },
-      {
-        '@type': 'Book',
-        position: 5,
-        name: 'A Room with a View - Amplified',
-        author: { '@type': 'Person', name: 'E.M. Forster' },
-        genre: 'Classic Literature',
-        description: 'E.M. Forster\'s meditation on freedom amplified with reflections on authenticity and awakening',
-      },
-    ],
-  };
-
-  // Educational Resource Schema for Amplified Classics
-  const educationalResourceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Course',
-    name: 'Amplified Classics - Enhanced Literature Study',
-    description: 'Experience timeless literature through Intelligence Amplification with dynamic annotations, contextual essays, and reflective dialogues',
-    provider: {
-      '@type': 'Organization',
-      name: 'Intelligence Amplifier™',
-      url: 'https://intelligenceamplifier.ai',
-    },
-    educationalLevel: 'All Levels',
-    teaches: [
-      'Literary Analysis',
-      'Critical Thinking',
-      'Historical Context',
-      'Character Psychology',
-      'Thematic Understanding',
-    ],
-    hasCourseInstance: [
-      {
-        '@type': 'CourseInstance',
-        name: 'Pride and Prejudice - Amplified Edition',
-        courseMode: 'Self-paced',
-      },
-      {
-        '@type': 'CourseInstance',
-        name: 'Sense and Sensibility - Amplified Edition',
-        courseMode: 'Self-paced',
-      },
-      {
-        '@type': 'CourseInstance',
-        name: 'Jane Eyre - Amplified Edition',
-        courseMode: 'Self-paced',
-      },
-      {
-        '@type': 'CourseInstance',
-        name: 'Wuthering Heights - Amplified Edition',
-        courseMode: 'Self-paced',
-      },
-      {
-        '@type': 'CourseInstance',
-        name: 'A Room with a View - Amplified Edition',
-        courseMode: 'Self-paced',
-      },
-    ],
-  };
-
-  // FAQ Schema for Amplified Classics
-  const amplifiedClassicsFAQ = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What are Amplified Classics?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Amplified Classics are classic literary works enriched with Intelligence Amplification features including dynamic annotations, contextual essays, character analysis, thematic mapping, and reflective dialogues to deepen understanding and engagement with timeless literature.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Which books are available in the Amplified Classics collection?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'The current collection includes Pride and Prejudice, Sense and Sensibility, Jane Eyre, Wuthering Heights, and A Room with a View. Each edition preserves the original text while adding modern insights and educational enhancements.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'How does Intelligence Amplification enhance classic literature?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Intelligence Amplification enhances classics through six key features: dynamic annotations that decode historical context, character psychology analysis using modern frameworks, contextual essays on social and cultural forces, thematic mapping to track ideas across chapters, reflective discussion prompts, and optional modern language bridges for accessibility.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Are Amplified Classics suitable for educators and students?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes! Amplified Classics are designed for all readers including educators, students, book clubs, speed readers, slow readers, and literature enthusiasts. They include teaching prompts, lesson plans, classroom activities, and discussion questions perfect for educational settings.',
-        },
-      },
-    ],
-  };
-
-  // Classic Authors Schema
-  const classicAuthorsSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'Classic Literature Authors',
-    description: 'Celebrated authors whose works are featured in the Amplified Classics collection',
-    itemListElement: [
-      {
-        '@type': 'Person',
-        position: 1,
-        name: 'Jane Austen',
-        birthDate: '1775',
-        deathDate: '1817',
-        jobTitle: 'Author',
-        description: 'Master of social commentary and romantic irony',
-        sameAs: 'https://en.wikipedia.org/wiki/Jane_Austen',
-      },
-      {
-        '@type': 'Person',
-        position: 2,
-        name: 'Charlotte Brontë',
-        birthDate: '1816',
-        deathDate: '1855',
-        jobTitle: 'Author',
-        description: 'Pioneer of feminist Gothic literature',
-        sameAs: 'https://en.wikipedia.org/wiki/Charlotte_Bront%C3%AB',
-      },
-      {
-        '@type': 'Person',
-        position: 3,
-        name: 'Emily Brontë',
-        birthDate: '1818',
-        deathDate: '1848',
-        jobTitle: 'Author',
-        description: 'Poet of passion and psychological depth',
-        sameAs: 'https://en.wikipedia.org/wiki/Emily_Bront%C3%AB',
-      },
-      {
-        '@type': 'Person',
-        position: 4,
-        name: 'E.M. Forster',
-        birthDate: '1879',
-        deathDate: '1970',
-        jobTitle: 'Author',
-        description: 'Observer of class and human connection',
-        sameAs: 'https://en.wikipedia.org/wiki/E._M._Forster',
-      },
-      {
-        '@type': 'Person',
-        position: 5,
-        name: 'Charles Dickens',
-        birthDate: '1812',
-        deathDate: '1870',
-        jobTitle: 'Author',
-        description: 'Victorian chronicler of social conscience',
-        sameAs: 'https://en.wikipedia.org/wiki/Charles_Dickens',
-      },
-      {
-        '@type': 'Person',
-        position: 6,
-        name: 'George Eliot',
-        birthDate: '1819',
-        deathDate: '1880',
-        jobTitle: 'Author',
-        description: 'Sage of provincial life and moral complexity',
-        sameAs: 'https://en.wikipedia.org/wiki/George_Eliot',
-      },
-      {
-        '@type': 'Person',
-        position: 7,
-        name: 'Thomas Hardy',
-        birthDate: '1840',
-        deathDate: '1928',
-        jobTitle: 'Author',
-        description: 'Master of tragic realism and fate',
-        sameAs: 'https://en.wikipedia.org/wiki/Thomas_Hardy',
-      },
-      {
-        '@type': 'Person',
-        position: 8,
-        name: 'Virginia Woolf',
-        birthDate: '1882',
-        deathDate: '1941',
-        jobTitle: 'Author',
-        description: 'Modernist pioneer of consciousness',
-        sameAs: 'https://en.wikipedia.org/wiki/Virginia_Woolf',
-      },
-      {
-        '@type': 'Person',
-        position: 9,
-        name: 'Oscar Wilde',
-        birthDate: '1854',
-        deathDate: '1900',
-        jobTitle: 'Author',
-        description: 'Aesthete of wit and paradox',
-        sameAs: 'https://en.wikipedia.org/wiki/Oscar_Wilde',
-      },
-      {
-        '@type': 'Person',
-        position: 10,
-        name: 'Edith Wharton',
-        birthDate: '1862',
-        deathDate: '1937',
-        jobTitle: 'Author',
-        description: 'Chronicler of Gilded Age society',
-        sameAs: 'https://en.wikipedia.org/wiki/Edith_Wharton',
-      },
-      {
-        '@type': 'Person',
-        position: 11,
-        name: 'Henry James',
-        birthDate: '1843',
-        deathDate: '1916',
-        jobTitle: 'Author',
-        description: 'Master of psychological realism',
-        sameAs: 'https://en.wikipedia.org/wiki/Henry_James',
-      },
-    ],
-  };
-
   return (
     <>
-      <StructuredData data={[organizationSchema, webPageSchema, amplifiedClassicsSchema, educationalResourceSchema, amplifiedClassicsFAQ, classicAuthorsSchema]} />
+      <StructuredData data={[organizationSchema, webPageSchema]} />
       <Navigation />
       <main className="min-h-screen bg-[#f5f5f7] dark:bg-[#000000] pt-16">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-screen flex items-center">
-        {/* Abstract Mind Background */}
-        <div className="absolute inset-0 opacity-[0.81] dark:opacity-[0.54]">
-          <Image
-            src="/abstractMind.png"
-            alt=""
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        
-        {/* macOS-style gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#007AFF]/5 via-[#AF52DE]/5 to-[#34C759]/5 dark:from-[#0A84FF]/10 dark:via-[#BF5AF2]/10 dark:to-[#30D158]/10"></div>
-        
-        {/* Ambient light orbs - macOS style */}
-        <div className="absolute top-40 left-20 w-[600px] h-[600px] bg-[#007AFF] rounded-full filter blur-[120px] opacity-20 dark:opacity-10 animate-float-slow"></div>
-        <div className="absolute bottom-40 right-20 w-[600px] h-[600px] bg-[#AF52DE] rounded-full filter blur-[120px] opacity-20 dark:opacity-10 animate-float-slow" style={{ animationDelay: '2s' }}></div>
-        
-        <div className="relative max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
-          <div className="text-center space-y-8">
-            {/* Logo with frosted glass effect */}
-            <div className="flex justify-center mb-16 animate-fade-in-scale">
-              <div className="relative p-10 glass-effect rounded-[40px]">
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64">
-                  <Image
-                    src="/IA-logo.png"
-                    alt="Intelligence Amplifier Logo"
-                    fill
-                    className="object-contain drop-shadow-2xl"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-            
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-[#000000] dark:text-white mb-4 animate-fade-in-up tracking-tight leading-[1.08] [text-shadow:_0_4px_12px_rgb(0_0_0_/_30%),_0_2px_4px_rgb(0_0_0_/_20%)] dark:[text-shadow:_0_4px_16px_rgb(255_255_255_/_40%),_0_2px_8px_rgb(255_255_255_/_30%)]">
-              The Intelligence<br />Amplifier
-            </h1>
-            
-            <p className="text-xl sm:text-2xl text-[#007A3D] dark:text-[#30D158] font-black mb-12 animate-fade-in-up uppercase tracking-wide [text-shadow:_0_0_20px_rgb(255_255_255_/_80%),_0_0_40px_rgb(255_255_255_/_50%),_0_2px_8px_rgb(255_255_255_/_60%)] dark:[text-shadow:_0_0_20px_rgb(48_209_88_/_60%),_0_0_40px_rgb(48_209_88_/_40%)]" style={{ animationDelay: '0.1s' }}>
-              Methods of Amplification
-            </p>
-            
-            <div className="max-w-2xl mx-auto space-y-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="backdrop-blur-md bg-white/40 dark:bg-black/40 rounded-3xl p-8 border border-white/50 dark:border-white/10 shadow-xl">
-                <p className="text-lg sm:text-xl text-[#1d1d1f] dark:text-white leading-relaxed font-medium">
-                  The Intelligence Amplifier (IA) is not merely an invention — it is an <span className="font-bold text-[#AF52DE] dark:text-[#BF5AF2]">evolution</span> in how we learn, create, and perceive.
-                </p>
-                <p className="text-lg sm:text-xl text-[#1d1d1f] dark:text-white leading-relaxed font-medium mt-4">
-                  Where Artificial Intelligence (AI) aims to replace human effort, Intelligence Amplification seeks to <span className="font-bold text-[#007AFF] dark:text-[#0A84FF]">expand it</span>.
-                </p>
-                <div className="py-6 mt-4 border-t border-[#1d1d1f]/10 dark:border-white/10">
-                  <p className="text-2xl sm:text-3xl font-medium italic text-[#1d1d1f] dark:text-white leading-snug">
-                    &quot;What happens when intelligence is not substituted, but multiplied?&quot;
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Methods Section */}
-      <section className="py-32 relative overflow-hidden">
-        {/* Abstract Mind Background - Subtle */}
-        <div className="absolute inset-0 opacity-[0.54] dark:opacity-[0.405]">
-          <Image
-            src="/abstractMind.png"
-            alt=""
-            fill
-            className="object-cover scale-110"
-          />
-        </div>
-        
-        <div className="relative max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-24">
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] dark:text-white mb-6 tracking-tight drop-shadow-md">
-              Five Methods of Amplification
-            </h2>
-            <p className="text-xl text-[#1d1d1f] dark:text-white max-w-3xl mx-auto leading-relaxed font-medium drop-shadow-sm">
-              A living framework of practices that help individuals, educators, and creators work <span className="italic font-semibold">with</span> intelligent systems rather than <span className="italic font-semibold">for</span> them.
-            </p>
+        {/* ── HERO ── */}
+        <section className="relative overflow-hidden min-h-screen flex items-center">
+          {/* Black base */}
+          <div className="absolute inset-0 bg-black" />
+
+          {/* Background image — dim overlay on black */}
+          <div className="absolute inset-0 opacity-[0.25]">
+            <Image src="/abstractMind.png" alt="" fill className="object-cover" priority />
           </div>
-          
-          <div className="space-y-6">
-            {methods.map((method, index) => (
-              <div 
-                key={index}
-                className="group method-card"
+
+          {/* Color accent — vivid on black for drama */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0A84FF]/20 via-transparent to-[#BF5AF2]/15" />
+
+          {/* Ambient orbs */}
+          <div className="absolute top-40 left-20 w-[700px] h-[700px] bg-[#0A84FF] rounded-full filter blur-[160px] opacity-25 animate-float-slow" />
+          <div
+            className="absolute bottom-40 right-20 w-[700px] h-[700px] bg-[#BF5AF2] rounded-full filter blur-[160px] opacity-20 animate-float-slow"
+            style={{ animationDelay: '2s' }}
+          />
+
+          {/* Bottom fade to next section */}
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/80 to-transparent" />
+
+          <div className="relative max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
+            <div className="text-center space-y-8">
+              {/* Logo */}
+              <div className="flex justify-center mb-12 animate-fade-in-scale">
+                <div className="relative p-10 glass-effect rounded-[40px]">
+                  <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56">
+                    <Image
+                      src="/IA-logo.png"
+                      alt="IntelligenceAmplifier.AI Logo"
+                      fill
+                      className="object-contain drop-shadow-2xl"
+                      priority
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] animate-fade-in-up drop-shadow-lg">
+                Deploy AI That<br />Amplifies Your Organization
+              </h1>
+
+              <p
+                className="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-medium animate-fade-in-up"
+                style={{ animationDelay: '0.1s' }}
               >
-                <div className="glass-card rounded-[24px] p-8 sm:p-10 transition-all duration-500 hover:scale-[1.02] shadow-lg">
-                  <div className="flex items-start gap-6 sm:gap-8">
-                    <div className="flex-shrink-0">
-                      <div className={`w-14 h-14 rounded-[14px] ${method.bgColor} ${method.textColor} flex items-center justify-center text-xl font-bold shadow-md`}>
-                        {index + 1}
-                      </div>
-                    </div>
-                    <div className="flex-1 space-y-4">
-                      <h3 className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">
-                        {method.title}
-                      </h3>
-                      <p className="text-base sm:text-lg text-[#1d1d1f] dark:text-white leading-relaxed font-medium">
-                        {method.description}
-                      </p>
-                      <p className="text-sm sm:text-base text-[#1d1d1f]/70 dark:text-white/70 leading-relaxed">
-                        <span className="font-semibold text-[#1d1d1f] dark:text-white">Examples:</span> {method.examples}
-                      </p>
-                      <p className={`text-lg sm:text-xl font-medium italic ${method.accentColor} pt-2`}>
-                        {method.tagline}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Amplified Classics Introduction Section - WSJ Style */}
-      <section 
-        id="amplified-classics" 
-        className="py-24 relative overflow-hidden bg-white dark:bg-[#1a1a1a]"
-        aria-labelledby="amplified-classics-heading"
-      >
-        <div className="relative max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Header */}
-          <header className="text-center mb-16 border-b-4 border-black dark:border-white pb-12">
-            <h2 id="amplified-classics-heading" className="text-4xl sm:text-5xl font-serif font-bold text-black dark:text-white mb-4 tracking-tight">
-              Amplified Classics
-            </h2>
-            <p className="text-xl sm:text-2xl text-black dark:text-white font-serif italic mb-6">
-              Rediscover the Living Soul of Literature
-            </p>
-            <p className="text-base text-black dark:text-white/90 mt-6 max-w-3xl mx-auto leading-relaxed font-serif">
-              Where classic literature meets Intelligence Amplification — enriching timeless narratives with contextual depth and reflective insight.
-            </p>
-          </header>
-
-          {/* Core Message - Dark Panel - WSJ Style */}
-          <div className="p-10 sm:p-14 mb-12 bg-black dark:bg-white border-4 border-black dark:border-white">
-            <div className="text-center space-y-10">
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white dark:text-black leading-tight">
-                In Awe of Humanity&apos;s Greatest Gift
-              </h3>
-              
-              <p className="text-lg sm:text-xl text-white dark:text-black leading-relaxed max-w-4xl mx-auto font-serif">
-                For thousands of years, humanity has created stories—not just to entertain, but to <span className="font-bold underline">understand ourselves</span>, to <span className="font-bold underline">question our world</span>, and to <span className="font-bold underline">connect across the barriers</span> of time, language, and culture.
+                IntelligenceAmplifier.AI is a deployable AI platform that integrates with your
+                organization&apos;s documents, systems, and workflows to automate analysis, enhance
+                decision-making, and increase operational efficiency.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto pt-6">
-                {/* Stories That Endure */}
-                <div className="bg-white dark:bg-gray-900 p-8 text-left border-2 border-white dark:border-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
-                  <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-3 border-b-2 border-black dark:border-white pb-2">Stories That Endure</h4>
-                  <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                    These works have survived centuries not by accident, but because they touch something fundamental in the human experience
-                  </p>
-                </div>
-
-                {/* Ideas That Challenge */}
-                <div className="bg-white dark:bg-gray-900 p-8 text-left border-2 border-white dark:border-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
-                  <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-3 border-b-2 border-black dark:border-white pb-2">Ideas That Challenge</h4>
-                  <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                    From questioning authority to exploring identity, classics push us to think beyond our assumptions and comfort zones
-                  </p>
-                </div>
-
-                {/* Wisdom That Transforms */}
-                <div className="bg-white dark:bg-gray-900 p-8 text-left border-2 border-white dark:border-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
-                  <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-3 border-b-2 border-black dark:border-white pb-2">Wisdom That Transforms</h4>
-                  <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                    The insights gained from great literature don&apos;t just inform—they change how we see ourselves and our place in the world
-                  </p>
-                </div>
-
-                {/* Voices That Unite */}
-                <div className="bg-white dark:bg-gray-900 p-8 text-left border-2 border-white dark:border-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
-                  <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-3 border-b-2 border-black dark:border-white pb-2">Voices That Unite</h4>
-                  <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                    Across every language, culture, and era, classic literature reveals our shared humanity and collective dreams
-                  </p>
-                </div>
+              <div
+                className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
+                style={{ animationDelay: '0.2s' }}
+              >
+                <Link href="mailto:info@arvintech.com?subject=Business Demo Request">
+                  <button className="px-10 py-4 bg-[#007AFF] dark:bg-[#0A84FF] text-white rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[0_8px_30px_rgb(0,122,255,0.3)]">
+                    Schedule Business Demo
+                  </button>
+                </Link>
+                <Link href="mailto:info@arvintech.com?subject=Deployment Consultation Request">
+                  <button className="px-10 py-4 bg-white/10 backdrop-blur-md text-white rounded-full text-lg font-semibold hover:scale-105 hover:bg-white/20 transition-all duration-300 border border-white/25">
+                    Request Deployment Consultation
+                  </button>
+                </Link>
               </div>
 
-              <div className="pt-8 border-t-2 border-white dark:border-black">
-                <p className="text-base sm:text-lg text-white dark:text-black leading-relaxed max-w-3xl mx-auto font-serif">
-                  <span className="font-bold italic">Amplified Classics</span> transforms reading into dialogue — between past and present, between reader and text, between human insight and reflective intelligence.
+              <p
+                className="text-base text-white/50 animate-fade-in-up font-medium"
+                style={{ animationDelay: '0.3s' }}
+              >
+                Deployment and support provided by{' '}
+                <ArvinTechLink />{' '}
+                — Managed IT and AI Services Since 2000
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── WHAT IT DOES ── */}
+        <section className="py-32 relative overflow-hidden bg-white dark:bg-[#1a1a1a]">
+          <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] dark:text-white mb-6 tracking-tight">
+                What IntelligenceAmplifier.AI Does
+              </h2>
+              <p className="text-xl text-[#1d1d1f]/80 dark:text-white/80 max-w-3xl mx-auto leading-relaxed">
+                IntelligenceAmplifier.AI enables organizations to deploy secure, internal AI
+                assistants trained on their own data, documents, and operational knowledge.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+              {features.map((f, i) => (
+                <div
+                  key={i}
+                  className="glass-card rounded-[24px] p-8 flex items-start gap-5 hover:scale-[1.02] transition-all duration-300 shadow-md"
+                >
+                  <div
+                    className={`w-12 h-12 rounded-[12px] ${f.color} flex items-center justify-center flex-shrink-0 shadow-sm`}
+                  >
+                    <f.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-[#1d1d1f] dark:text-white mb-2">{f.title}</h3>
+                    <p className="text-sm text-[#1d1d1f]/70 dark:text-white/70 leading-relaxed">
+                      {f.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center">
+              <div className="inline-block backdrop-blur-md bg-[#007AFF]/10 dark:bg-[#0A84FF]/20 rounded-2xl px-10 py-6 border border-[#007AFF]/20">
+                <p className="text-xl sm:text-2xl font-bold text-[#007AFF] dark:text-[#0A84FF]">
+                  This is not generic AI.<br />It is AI aligned with your organization.
                 </p>
               </div>
             </div>
           </div>
+        </section>
 
-          {/* Your Digital Study Companion - WSJ Style */}
-          <article className="py-16 border-t-2 border-black dark:border-white" aria-labelledby="study-companion-heading">
-            <header className="text-center mb-12">
-              <h3 id="study-companion-heading" className="text-3xl sm:text-4xl font-serif font-bold text-black dark:text-white mb-4 tracking-tight">
-                Your Digital Study Companion
-              </h3>
-              <p className="text-base text-black dark:text-white max-w-2xl mx-auto leading-relaxed font-serif">
-                Modern learning tools designed to enhance your understanding of classic literature
-              </p>
-            </header>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {/* Intelligence-Amplified Analysis */}
-              <div className="bg-white dark:bg-black p-8 text-left border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-black dark:border-white">
-                  <Brain className="w-6 h-6 text-black dark:text-white" />
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white uppercase tracking-wide">Intelligence-Amplified Analysis</h4>
-                </div>
-                <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                  Get instant insights, character analysis, and thematic exploration with our advanced AI study assistant
-                </p>
-              </div>
-
-              {/* Study Guides */}
-              <div className="bg-white dark:bg-black p-8 text-left border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-black dark:border-white">
-                  <FileText className="w-6 h-6 text-black dark:text-white" />
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white uppercase tracking-wide">Study Guides</h4>
-                </div>
-                <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                  Comprehensive summaries, discussion questions, and modern adaptations for every chapter
-                </p>
-              </div>
-
-              {/* Critical Thinking */}
-              <div className="bg-white dark:bg-black p-8 text-left border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-black dark:border-white">
-                  <Target className="w-6 h-6 text-black dark:text-white" />
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white uppercase tracking-wide">Critical Thinking</h4>
-                </div>
-                <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                  Essay prompts, literary techniques, and activities to deepen your understanding
-                </p>
-              </div>
-
-              {/* Teacher's Hub */}
-              <div className="bg-white dark:bg-black p-8 text-left border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-black dark:border-white">
-                  <GraduationCap className="w-6 h-6 text-black dark:text-white" />
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white uppercase tracking-wide">Teacher&apos;s Hub</h4>
-                </div>
-                <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                  Custom lesson plans, classroom activities, and AI-amplified learning resources
-                </p>
-              </div>
-            </div>
-          </article>
-
-          {/* Experience & Appreciation - WSJ Style */}
-          <article className="py-16 border-t-2 border-black dark:border-white" aria-labelledby="experience-appreciation-heading">
-            <header className="text-center mb-12">
-              <h3 id="experience-appreciation-heading" className="text-3xl sm:text-4xl font-serif font-bold text-black dark:text-white mb-4 tracking-tight">
-                Experience & Appreciation
-              </h3>
-              <p className="text-base text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-serif">
-                Different readers, different journeys—Amplified Classics meets you where you are and enhances how you engage with literature
-              </p>
-            </header>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {/* FOR SPEED READERS */}
-              <div className="bg-white dark:bg-black p-8 text-left border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="mb-4">
-                  <p className="text-xs font-serif font-bold text-black dark:text-white uppercase tracking-widest mb-3 border-b border-black dark:border-white pb-2">FOR SPEED READERS</p>
-                  <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-4">Beyond Comprehension</h4>
-                </div>
-                <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                  Speed reading isn&apos;t just about finishing the book, but <span className="font-bold italic">appreciate the artistry</span>—the turn of phrase that captures a lifetime of longing, the dialogue that reveals character, the language that has endured not because of the story, but because of how it&apos;s told.
-                </p>
-              </div>
-
-              {/* FOR SLOW READERS */}
-              <div className="bg-white dark:bg-black p-8 text-left border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="mb-4">
-                  <p className="text-xs font-serif font-bold text-black dark:text-white uppercase tracking-widest mb-3 border-b border-black dark:border-white pb-2">FOR SLOW READERS</p>
-                  <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-4">The Joy of Immersion</h4>
-                </div>
-                <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                  You savor. You linger. This is exactly how great literature is meant to be experienced. <span className="font-bold italic">Reading slowly means reading deeply</span>—experiencing the texture of language, the weight of moral dilemmas. Take your time. The joy is in the journey.
-                </p>
-              </div>
-
-              {/* FOR EDUCATORS */}
-              <div className="bg-white dark:bg-black p-8 text-left border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="mb-4">
-                  <p className="text-xs font-serif font-bold text-black dark:text-white uppercase tracking-widest mb-3 border-b border-black dark:border-white pb-2">FOR EDUCATORS</p>
-                  <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-4">The Ease of Flow</h4>
-                </div>
-                <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                  Our method creates <span className="font-bold italic">effortless flow</span> from resistance to engagement. Modern adaptations make historical context click. <span className="font-bold italic">AI</span> meets students where they are. The text becomes accessible without being diminished. Your students don&apos;t just complete the assignment—they convince themselves.
-                </p>
-              </div>
-
-              {/* FOR AFICIONADOS */}
-              <div className="bg-white dark:bg-black p-8 text-left border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="mb-4">
-                  <p className="text-xs font-serif font-bold text-black dark:text-white uppercase tracking-widest mb-3 border-b border-black dark:border-white pb-2">FOR AFICIONADOS</p>
-                  <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-4">Fresh Eyes on Familiar Pages</h4>
-                </div>
-                <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                  Every reading reveals something <span className="font-bold italic">new</span>. Our Intelligence Amplified analysis offers perspectives you might not have considered. Even beloved classics surprise you when viewed through new lenses. The conversation continues. The discovery never ends.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          {/* How We Amplify Classic Literature - WSJ Style */}
-          <article className="py-16 border-t-4 border-black dark:border-white" aria-labelledby="amplification-methods-heading">
-            <header className="text-center mb-12">
-              <h3 id="amplification-methods-heading" className="text-3xl sm:text-4xl font-serif font-bold text-black dark:text-white mb-4 tracking-tight">
-                How We Amplify Classic Literature
-              </h3>
-              <p className="text-base text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-serif">
-                Every Amplified Classic preserves the original text while enriching your reading experience with carefully crafted enhancements
-              </p>
-            </header>
-
-            <div className="space-y-4 max-w-5xl mx-auto">
-              {/* Dynamic Annotations */}
-              <div className="bg-white dark:bg-black p-8 border-l-4 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="flex flex-col md:flex-row gap-6 items-start">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 border-2 border-black dark:border-white flex items-center justify-center">
-                      <Edit className="w-6 h-6 text-black dark:text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-3 uppercase tracking-wide">Dynamic Annotations</h4>
-                    <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                      Contextual notes illuminate historical references, decode archaic language, and reveal literary devices as you read. Our annotations adapt to your reading level, providing exactly the context you need without overwhelming the narrative flow.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Character Deep Dives */}
-              <div className="bg-white dark:bg-black p-8 border-l-4 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="flex flex-col md:flex-row gap-6 items-start">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 border-2 border-black dark:border-white flex items-center justify-center">
-                      <Users className="w-6 h-6 text-black dark:text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-3 uppercase tracking-wide">Character Analysis & Psychology</h4>
-                    <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                      Explore character motivations through modern psychological frameworks. Our AI-powered analysis connects timeless characters to contemporary understanding of human behavior, revealing why Elizabeth Bennet, Jane Eyre, and Heathcliff still resonate today.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Contextual Essays */}
-              <div className="bg-white dark:bg-black p-8 border-l-4 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="flex flex-col md:flex-row gap-6 items-start">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 border-2 border-black dark:border-white flex items-center justify-center">
-                      <BookOpen className="w-6 h-6 text-black dark:text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-3 uppercase tracking-wide">Contextual Essays & Historical Insights</h4>
-                    <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                      Understand the social, political, and cultural forces that shaped each work. From Victorian marriage markets to industrial revolution impacts, we connect historical context to the text, making distant eras feel immediate and relevant.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Thematic Mapping */}
-              <div className="bg-white dark:bg-black p-8 border-l-4 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="flex flex-col md:flex-row gap-6 items-start">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 border-2 border-black dark:border-white flex items-center justify-center">
-                      <Map className="w-6 h-6 text-black dark:text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-3 uppercase tracking-wide">Thematic Mapping & Connections</h4>
-                    <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                      Follow themes as they develop across chapters. See how concepts like pride, prejudice, freedom, and identity evolve throughout the narrative. Our visual guides help you track motifs, symbols, and recurring ideas that might otherwise slip by unnoticed.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Reflective Dialogues */}
-              <div className="bg-white dark:bg-black p-8 border-l-4 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="flex flex-col md:flex-row gap-6 items-start">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 border-2 border-black dark:border-white flex items-center justify-center">
-                      <MessageCircle className="w-6 h-6 text-black dark:text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-3 uppercase tracking-wide">Reflective Dialogues & Discussion Prompts</h4>
-                    <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                      Engage with thought-provoking questions that deepen comprehension and spark personal reflection. Our AI-powered prompts encourage you to connect the text to your own experiences, ethical dilemmas, and modern-day parallels—transforming passive reading into active dialogue.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Modern Adaptations */}
-              <div className="bg-white dark:bg-black p-8 border-l-4 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="flex flex-col md:flex-row gap-6 items-start">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 border-2 border-black dark:border-white flex items-center justify-center">
-                      <RefreshCw className="w-6 h-6 text-black dark:text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-serif font-bold text-black dark:text-white mb-3 uppercase tracking-wide">Modern Language Bridges</h4>
-                    <p className="text-base text-black dark:text-white leading-relaxed font-serif">
-                      Optional modern language summaries help bridge the gap between 19th-century prose and contemporary comprehension—without replacing the original beauty. Perfect for students, ESL readers, or anyone who wants to ensure they&apos;re capturing every nuance.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-12 text-center">
-              <div className="bg-white dark:bg-black p-8 border-4 border-black dark:border-white max-w-3xl mx-auto">
-                <p className="text-lg sm:text-xl text-black dark:text-white leading-relaxed font-serif">
-                  <span className="font-bold italic underline">The result?</span> Classic literature that feels alive, accessible, and deeply relevant—without losing a single word of the original masterpiece.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          {/* Classic Authors Section - WSJ Style */}
-          <article className="py-16 border-t-4 border-black dark:border-white" aria-labelledby="classic-authors-heading">
-            <header className="text-center mb-12">
-              <h3 id="classic-authors-heading" className="text-3xl sm:text-4xl font-serif font-bold text-black dark:text-white mb-4 tracking-tight">
-                Masters of Classic Literature
-              </h3>
-              <p className="text-base text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-serif">
-                Amplifying the works of history&apos;s most celebrated authors
-              </p>
-            </header>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-7xl mx-auto">
-              {/* Jane Austen */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">Jane Austen</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1775–1817</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Master of social commentary and romantic irony
-                  </p>
-                </div>
-              </div>
-
-              {/* Charlotte Brontë */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">Charlotte Brontë</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1816–1855</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Pioneer of feminist Gothic literature
-                  </p>
-                </div>
-              </div>
-
-              {/* Emily Brontë */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">Emily Brontë</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1818–1848</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Poet of passion and psychological depth
-                  </p>
-                </div>
-              </div>
-
-              {/* E.M. Forster */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">E.M. Forster</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1879–1970</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Observer of class and human connection
-                  </p>
-                </div>
-              </div>
-
-              {/* Charles Dickens */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">Charles Dickens</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1812–1870</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Victorian chronicler of social conscience
-                  </p>
-                </div>
-              </div>
-
-              {/* George Eliot */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">George Eliot</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1819–1880</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Sage of provincial life and moral complexity
-                  </p>
-                </div>
-              </div>
-
-              {/* Thomas Hardy */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">Thomas Hardy</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1840–1928</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Master of tragic realism and fate
-                  </p>
-                </div>
-              </div>
-
-              {/* Virginia Woolf */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">Virginia Woolf</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1882–1941</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Modernist pioneer of consciousness
-                  </p>
-                </div>
-              </div>
-
-              {/* Oscar Wilde */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">Oscar Wilde</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1854–1900</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Aesthete of wit and paradox
-                  </p>
-                </div>
-              </div>
-
-              {/* Edith Wharton */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">Edith Wharton</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1862–1937</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Chronicler of Gilded Age society
-                  </p>
-                </div>
-              </div>
-
-              {/* Henry James */}
-              <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-black dark:text-white mb-2 uppercase tracking-wide">Henry James</h4>
-                  <p className="text-xs font-serif text-black dark:text-white/80 mb-3">1843–1916</p>
-                  <p className="text-sm font-serif text-black dark:text-white leading-relaxed">
-                    Master of psychological realism
-                  </p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          {/* Call to Action - WSJ Style */}
-          <footer className="text-center pt-12 border-t-2 border-black dark:border-white mt-16">
-            <Link href="/amplified-classics" aria-label="Explore Amplified Classics Library">
-              <button className="px-12 py-4 bg-black dark:bg-white text-white dark:text-black text-base font-serif font-bold uppercase tracking-widest border-2 border-black dark:border-white hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-all duration-300">
-                Explore the Library
-              </button>
-            </Link>
-          </footer>
-        </div>
-      </section>
-
-      {/* Book Series Section */}
-      <section id="books" className="py-32 relative bg-[#f5f5f7] dark:bg-[#000000]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] dark:text-white mb-6 tracking-tight drop-shadow-md">
-              Our Book Series
-            </h2>
-            <p className="text-xl text-[#1d1d1f] dark:text-white max-w-3xl mx-auto leading-relaxed font-medium">
-              Explore our published book series that amplify human intelligence and reimagine literature
-            </p>
+        {/* ── BUSINESS USE CASES ── */}
+        <section id="use-cases" className="py-32 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.40] dark:opacity-[0.25]">
+            <Image src="/abstractMind.png" alt="" fill className="object-cover scale-110" />
           </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#007AFF]/5 via-transparent to-[#34C759]/5" />
 
-          <div className="space-y-20">
-            {/* Intelligence Amplifier Series */}
-            <div className="glass-card rounded-[32px] p-10 sm:p-14 transition-all duration-500 hover:scale-[1.01] shadow-xl">
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
-                {/* Series Info */}
-                <div className="lg:col-span-2 space-y-6">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 rounded-[16px] bg-[#007AFF] dark:bg-[#0A84FF] flex items-center justify-center shadow-md">
-                      <BookStack className="w-8 h-8 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">
-                        Intelligence Amplifier Series
-                      </h3>
-                      <p className="text-lg font-semibold text-[#007AFF] dark:text-[#0A84FF] italic">
-                        Attitudes Towards AI
-                      </p>
-                    </div>
+          <div className="relative max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] dark:text-white mb-6 tracking-tight drop-shadow-sm">
+                Business Use Cases
+              </h2>
+              <p className="text-xl text-[#1d1d1f] dark:text-white/80 max-w-3xl mx-auto leading-relaxed font-medium">
+                Deploy AI where it matters most in your organization
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {useCases.map((uc, i) => (
+                <div
+                  key={i}
+                  className="glass-card rounded-[28px] p-10 hover:scale-[1.02] transition-all duration-500 shadow-lg"
+                >
+                  <div
+                    className={`w-14 h-14 rounded-[14px] ${uc.color} flex items-center justify-center mb-6 shadow-md`}
+                  >
+                    <uc.icon className="w-7 h-7 text-white" />
                   </div>
-                  
-                  <p className="text-lg text-[#1d1d1f] dark:text-white leading-relaxed font-medium">
-                    A groundbreaking series exploring our evolving relationship with artificial intelligence. From Silicon Valley&apos;s innovation culture to the philosophical depths of human spirit, each book offers a unique lens to examine our AI-augmented future.
+                  <h3 className="text-2xl font-bold text-[#1d1d1f] dark:text-white mb-3 tracking-tight">
+                    {uc.title}
+                  </h3>
+                  <p className="text-base text-[#1d1d1f] dark:text-white/80 leading-relaxed">
+                    {uc.description}
                   </p>
-                  
-                  <div className="space-y-3">
-                    <h4 className="text-sm font-bold text-[#1d1d1f]/70 dark:text-white/70 uppercase tracking-wide">
-                      Books in the Series
-                    </h4>
+                  <p className="text-sm text-[#1d1d1f]/60 dark:text-white/50 leading-relaxed mt-2">
+                    {uc.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── INDUSTRY APPLICATIONS ── */}
+        <section id="industries" className="py-32 relative overflow-hidden bg-white dark:bg-[#1a1a1a]">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            {/* Header */}
+            <div className="text-center mb-20">
+              <p className="text-sm font-semibold text-[#007AFF] dark:text-[#0A84FF] uppercase tracking-widest mb-4">
+                Built for Every Sector
+              </p>
+              <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] dark:text-white mb-6 tracking-tight">
+                Industry Applications
+              </h2>
+              <p className="text-xl text-[#1d1d1f]/70 dark:text-white/70 max-w-2xl mx-auto leading-relaxed">
+                IntelligenceAmplifier.AI adapts to the specific documents, workflows, and knowledge
+                of your industry — out of the box.
+              </p>
+            </div>
+
+            {/* Industry grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {industries.map((ind, i) => {
+                const CardInner = (
+                  <div className="group glass-card rounded-[24px] p-8 hover:scale-[1.02] hover:shadow-xl transition-all duration-300 h-full">
+                    {/* Icon */}
+                    <div
+                      className={`w-12 h-12 rounded-[12px] ${ind.color} flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <ind.icon className="w-6 h-6 text-white" />
+                    </div>
+
+                    {/* Industry name */}
+                    <h3 className="text-lg font-bold text-[#1d1d1f] dark:text-white mb-4 tracking-tight flex items-center gap-2">
+                      {ind.name}
+                      {ind.link && (
+                        <span className="text-xs font-semibold text-[#007AFF] dark:text-[#0A84FF] bg-[#007AFF]/10 dark:bg-[#0A84FF]/20 px-2 py-0.5 rounded-full">
+                          Case Study
+                        </span>
+                      )}
+                    </h3>
+
+                    {/* Applications */}
                     <ul className="space-y-2">
-                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
-                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
-                        <span className="font-medium">San Francisco: AI Capital of the World</span>
-                      </li>
-                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
-                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
-                        <span className="font-medium">Alarming Rise of Stupidity Amplified</span>
-                      </li>
-                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
-                        <span className="text-[#34C759] dark:text-[#30D158]">✓</span>
-                        <span className="font-medium">The Amplified Human Spirit</span>
-                      </li>
-                      <li className="flex items-center gap-2 text-[#1d1d1f] dark:text-white">
-                        <span className="text-[#007AFF] dark:text-[#0A84FF]">→</span>
-                        <span className="font-medium italic">Amplified Nietzsche (Coming Soon)</span>
-                      </li>
+                      {ind.applications.map((app, j) => (
+                        <li key={j} className="flex items-start gap-2 text-sm text-[#1d1d1f]/70 dark:text-white/60 leading-relaxed">
+                          <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${ind.dotColor}`} />
+                          {app}
+                        </li>
+                      ))}
                     </ul>
                   </div>
-                  
-                  <div className="pt-6">
-                    <Link href="/intelligence-amplifier-series">
-                      <button className="px-8 py-4 bg-[#007AFF] dark:bg-[#0A84FF] text-white rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg">
-                        Explore the Series
-                      </button>
-                    </Link>
+                );
+
+                return ind.link ? (
+                  <Link key={i} href={ind.link}>{CardInner}</Link>
+                ) : (
+                  <div key={i}>{CardInner}</div>
+                );
+              })}
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="text-center mt-16">
+              <p className="text-[#1d1d1f]/60 dark:text-white/50 mb-6 text-lg">
+                Don&apos;t see your industry?
+              </p>
+              <Link href="mailto:info@arvintech.com?subject=Industry Inquiry">
+                <button className="px-10 py-4 bg-[#007AFF] dark:bg-[#0A84FF] text-white rounded-full text-base font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[0_8px_30px_rgb(0,122,255,0.3)]">
+                  Ask About Your Industry
+                </button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── AI MARKETING ── */}
+        <section id="ai-marketing" className="py-32 relative overflow-hidden bg-white dark:bg-[#1a1a1a]">
+          <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+            {/* Header */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#007AFF]/10 dark:bg-[#0A84FF]/20 border border-[#007AFF]/20 mb-6">
+                <Megaphone className="w-4 h-4 text-[#007AFF] dark:text-[#0A84FF]" />
+                <span className="text-sm font-semibold text-[#007AFF] dark:text-[#0A84FF] uppercase tracking-wide">New Capability</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] dark:text-white mb-6 tracking-tight">
+                AI Marketing &amp; Remarketing
+              </h2>
+              <p className="text-xl text-[#1d1d1f]/80 dark:text-white/80 max-w-3xl mx-auto leading-relaxed">
+                Starting with an AI-featured website, IntelligenceAmplifier.AI powers intelligent
+                marketing campaigns — targeting the right audiences and driving remarketing
+                activities that convert.
+              </p>
+            </div>
+
+            {/* Feature row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              {marketingFeatures.map((f, i) => (
+                <div
+                  key={i}
+                  className="glass-card rounded-[28px] p-10 text-center hover:scale-[1.02] transition-all duration-500 shadow-lg"
+                >
+                  <div
+                    className={`w-16 h-16 rounded-full ${f.color} flex items-center justify-center mx-auto mb-6 shadow-lg`}
+                  >
+                    <f.icon className="w-8 h-8 text-white" />
                   </div>
+                  <h3 className="text-xl font-bold text-[#1d1d1f] dark:text-white mb-3">{f.title}</h3>
+                  <p className="text-sm text-[#1d1d1f]/70 dark:text-white/70 leading-relaxed">{f.description}</p>
                 </div>
-                
-                {/* Book Covers */}
-                <div className="lg:col-span-3 flex justify-center lg:justify-end px-4 sm:px-6 lg:px-8">
-                  <div className="w-full max-w-4xl">
-                    <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-6 sm:mb-8 lg:mb-10">
-                      <div className="aspect-[2/3] rounded-[24px] overflow-hidden shadow-2xl hover:scale-[1.05] transition-all duration-300 relative">
-                        <Image
-                          src="/book-covers/san-francisco-ai-capital.jpg.webp"
-                          alt="San Francisco: AI Capital of the World"
-                          width={500}
-                          height={750}
-                          className="object-contain w-full h-full"
-                        />
-                      </div>
-                      <div className="aspect-[2/3] rounded-[24px] overflow-hidden shadow-2xl hover:scale-[1.05] transition-all duration-300 relative">
-                        <Image
-                          src="/book-covers/alarming-rise-stupidity-amplified.jpg.webp"
-                          alt="Alarming Rise of Stupidity Amplified"
-                          width={500}
-                          height={750}
-                          className="object-contain w-full h-full"
-                        />
-                      </div>
+              ))}
+            </div>
+
+            {/* How AI marketing works — horizontal steps */}
+            <div className="glass-card rounded-[32px] p-10 sm:p-14 shadow-xl">
+              <h3 className="text-2xl font-bold text-[#1d1d1f] dark:text-white mb-10 text-center tracking-tight">
+                How AI Marketing Works
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {marketingSteps.map((step, i) => (
+                  <div key={i} className="flex flex-col items-center text-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-[#007AFF] dark:bg-[#0A84FF] text-white flex items-center justify-center font-black text-lg shadow-md flex-shrink-0">
+                      {i + 1}
                     </div>
-                    <div className="flex justify-center">
-                      <div className="w-1/2 px-3 sm:px-4 lg:px-5">
-                        <div className="aspect-[2/3] rounded-[24px] overflow-hidden shadow-2xl hover:scale-[1.05] transition-all duration-300 relative">
-                          <Image
-                            src="/book-covers/amplified-human-spirit.jpg.webp"
-                            alt="The Amplified Human Spirit"
-                            width={500}
-                            height={750}
-                            className="object-contain w-full h-full"
-                          />
-                        </div>
-                      </div>
+                    <div>
+                      <h4 className="text-base font-bold text-[#1d1d1f] dark:text-white mb-1">{step.title}</h4>
+                      <p className="text-sm text-[#1d1d1f]/60 dark:text-white/60 leading-relaxed">{step.description}</p>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
 
+            {/* CTA strip */}
+            <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/industries/ai-marketing">
+                <button className="px-10 py-4 bg-[#5856D6] dark:bg-[#5E5CE6] text-white rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#5856D6]/30">
+                  Read the Full Case Study
+                </button>
+              </Link>
+              <Link href="mailto:info@arvintech.com?subject=AI Marketing Inquiry">
+                <button className="px-10 py-4 glass-effect text-[#1d1d1f] dark:text-white rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 border border-[#1d1d1f]/20 dark:border-white/20">
+                  Explore AI Marketing Services
+                </button>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-32 relative bg-[#f5f5f7] dark:bg-[#000000]">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] dark:text-white mb-6 tracking-tight drop-shadow-md">
-              Our Projects
-            </h2>
-            <p className="text-xl text-[#1d1d1f] dark:text-white max-w-3xl mx-auto leading-relaxed font-medium">
-              Explore how we&apos;re applying Intelligence Amplification to real-world challenges
-            </p>
-          </div>
+        {/* ── HOW IT WORKS ── */}
+        <section id="how-it-works" className="py-32 relative bg-[#f5f5f7] dark:bg-[#000000]">
+          <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] dark:text-white mb-6 tracking-tight">
+                How It Works
+              </h2>
+              <p className="text-xl text-[#1d1d1f]/80 dark:text-white/80 max-w-2xl mx-auto">
+                Four steps from consultation to operational AI intelligence
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => {
-              const IconComponent = project.icon;
-              const CardContent = (
-                <div className="glass-card rounded-[24px] p-8 h-full transition-all duration-500 hover:scale-[1.02] shadow-lg">
-                  <div className="space-y-4">
-                    <div className={`w-16 h-16 rounded-[16px] ${project.iconBg} flex items-center justify-center mb-6 shadow-md`}>
-                      <IconComponent className="w-8 h-8 text-white" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {steps.map((step, i) => (
+                <div key={i} className="relative">
+                  <div className="glass-card rounded-[24px] p-8 h-full text-center hover:scale-[1.02] transition-all duration-300 shadow-md">
+                    <div
+                      className={`w-16 h-16 rounded-full ${step.color} flex items-center justify-center mx-auto mb-6 shadow-lg`}
+                    >
+                      <step.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">
-                      {project.title}
-                    </h3>
-                    <p className="text-base font-semibold text-[#1d1d1f]/70 dark:text-white/70 italic">
-                      {project.subtitle}
-                    </p>
-                    <p className="text-base text-[#1d1d1f] dark:text-white leading-relaxed font-medium">
-                      {project.description}
-                    </p>
-                    <div className="pt-4">
-                      <span className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${project.statusBg} ${project.statusText}`}>
-                        {project.status}
-                      </span>
+                    <div className="text-xs font-bold text-[#1d1d1f]/40 dark:text-white/40 uppercase tracking-widest mb-2">
+                      Step {i + 1}
                     </div>
+                    <h3 className="text-xl font-bold text-[#1d1d1f] dark:text-white mb-3">{step.title}</h3>
+                    <p className="text-sm text-[#1d1d1f]/70 dark:text-white/70 leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
-                </div>
-              );
-
-              return (
-                <div key={index} className="group relative">
-                  {project.link ? (
-                    <Link href={project.link}>
-                      {CardContent}
-                    </Link>
-                  ) : (
-                    CardContent
+                  {i < steps.length - 1 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-[#007AFF]/40 dark:bg-[#0A84FF]/40 z-10" />
                   )}
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Amplified Premise Section */}
-      <section className="py-32 relative overflow-hidden">
-        {/* Abstract Mind Background with gradient overlay */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 opacity-100 dark:opacity-100">
-            <Image
-              src="/abstractMind.png"
-              alt=""
-              fill
-              className="object-cover"
-            />
+        {/* ── PLATFORM BENEFITS ── */}
+        <section className="py-32 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <Image src="/abstractMind.png" alt="" fill className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#007AFF] via-[#AF52DE] to-[#34C759] dark:from-[#0A84FF] dark:via-[#BF5AF2] dark:to-[#30D158] mix-blend-multiply dark:mix-blend-screen" />
           </div>
-          {/* macOS-style vibrant background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#007AFF] via-[#AF52DE] to-[#34C759] dark:from-[#0A84FF] dark:via-[#BF5AF2] dark:to-[#30D158] mix-blend-multiply dark:mix-blend-screen"></div>
-        </div>
-        
-        <div className="absolute inset-0 backdrop-blur-[100px]"></div>
-        
-        {/* Floating light elements */}
-        <div className="absolute top-20 left-20 w-96 h-96 bg-white/10 rounded-full filter blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-white/10 rounded-full filter blur-3xl animate-float-slow" style={{ animationDelay: '3s' }}></div>
-        
-        <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center space-y-8">
-            <div className="w-12 h-1 bg-white/50 mx-auto mb-8 rounded-full shadow-lg"></div>
-            
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-10 tracking-tight leading-tight drop-shadow-2xl">
-              The Amplified Premise
-            </h2>
-            
-            <div className="backdrop-blur-sm bg-white/10 dark:bg-black/20 rounded-3xl p-10 border border-white/30 shadow-2xl">
-              <div className="space-y-8 max-w-2xl mx-auto">
-                <p className="text-2xl sm:text-3xl font-bold text-white leading-snug drop-shadow-lg">
-                  You were never meant to be replaced.
+          <div className="absolute inset-0 backdrop-blur-[100px]" />
+          <div className="absolute top-20 left-20 w-96 h-96 bg-white/10 rounded-full filter blur-3xl animate-float-slow" />
+          <div
+            className="absolute bottom-20 right-20 w-96 h-96 bg-white/10 rounded-full filter blur-3xl animate-float-slow"
+            style={{ animationDelay: '3s' }}
+          />
+
+          <div className="relative max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight drop-shadow-2xl">
+                Platform Benefits
+              </h2>
+              <p className="text-xl text-white/80 max-w-2xl mx-auto">
+                Built for organizations that demand security, control, and performance
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {benefits.map((b, i) => (
+                <div
+                  key={i}
+                  className="backdrop-blur-sm bg-white/10 dark:bg-black/20 rounded-[20px] p-8 border border-white/20 hover:bg-white/15 transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-[10px] bg-white/20 flex items-center justify-center mb-4">
+                    <b.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">{b.title}</h3>
+                  <p className="text-sm text-white/70 leading-relaxed">{b.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PRICING — hidden for now ── */}
+
+        {/* ── IA ATOMIC + POWERED BY ARVINTECH ── */}
+        <section className="py-24 sm:py-32 relative bg-white dark:bg-[#1a1a1a] overflow-hidden">
+          <div className="absolute top-0 left-1/3 w-[600px] h-[600px] bg-[#007AFF] rounded-full filter blur-[200px] opacity-[0.04] dark:opacity-[0.06]" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#34C759] rounded-full filter blur-[200px] opacity-[0.04] dark:opacity-[0.06]" />
+
+          <div className="relative max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+
+            {/* IA Atomic Introduction */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#007AFF]/10 dark:bg-[#0A84FF]/15 border border-[#007AFF]/20 dark:border-[#0A84FF]/25 mb-8">
+                <span className="w-2 h-2 rounded-full bg-[#007AFF] dark:bg-[#0A84FF] animate-pulse" />
+                <span className="text-sm font-semibold text-[#007AFF] dark:text-[#0A84FF] uppercase tracking-wide">Introducing</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1d1d1f] dark:text-white mb-6 tracking-tight">
+                IA Atomic
+              </h2>
+              <p className="text-2xl sm:text-3xl font-bold text-[#1d1d1f]/70 dark:text-white/60 mb-8 tracking-tight">
+                The Intelligence Amplifier Appliance
+              </p>
+              <p className="text-xl text-[#1d1d1f]/70 dark:text-white/60 max-w-3xl mx-auto leading-relaxed">
+                A self-contained, pre-configured AI deployment that arrives ready to power your
+                organization — plug it in, train it on your documents, and start amplifying
+                your team&apos;s intelligence on day one.
+              </p>
+            </div>
+
+            {/* Feature grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+              <div className="glass-card rounded-[24px] p-8 hover:scale-[1.02] transition-all duration-300">
+                <div className="w-12 h-12 rounded-[14px] bg-[#007AFF] dark:bg-[#0A84FF] flex items-center justify-center mb-5 shadow-md">
+                  <Shield className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-[#1d1d1f] dark:text-white mb-3 tracking-tight">
+                  Your Data Never Leaves
+                </h3>
+                <p className="text-sm text-[#1d1d1f]/65 dark:text-white/55 leading-relaxed">
+                  IA Atomic runs entirely on-premise. Your documents, your queries, and your
+                  AI&apos;s knowledge stay within your physical control — no cloud dependency,
+                  no external API calls, no data transmission.
                 </p>
-                <p className="text-lg sm:text-xl text-white leading-relaxed font-medium drop-shadow-md">
-                  You were meant to be amplified — to <span className="font-bold border-b-2 border-white/70 pb-1">see farther</span>, <span className="font-bold border-b-2 border-white/70 pb-1">feel deeper</span>, and <span className="font-bold border-b-2 border-white/70 pb-1">understand faster</span>.
+              </div>
+
+              <div className="glass-card rounded-[24px] p-8 hover:scale-[1.02] transition-all duration-300">
+                <div className="w-12 h-12 rounded-[14px] bg-[#34C759] dark:bg-[#30D158] flex items-center justify-center mb-5 shadow-md">
+                  <Rocket className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-[#1d1d1f] dark:text-white mb-3 tracking-tight">
+                  Deploy in Days, Not Months
+                </h3>
+                <p className="text-sm text-[#1d1d1f]/65 dark:text-white/55 leading-relaxed">
+                  Pre-loaded with IntelligenceAmplifier.AI, the LLM inference engine, vector
+                  database, and document ingestion pipeline. Connect to your network, feed it
+                  your documents, and the system is operational.
                 </p>
-                <p className="text-lg sm:text-xl text-white leading-relaxed font-medium pt-4 drop-shadow-md">
-                  The Methods of Amplification remind us that the true measure of intelligence is not computation, but <span className="font-bold text-2xl">connection</span>.
+              </div>
+
+              <div className="glass-card rounded-[24px] p-8 hover:scale-[1.02] transition-all duration-300">
+                <div className="w-12 h-12 rounded-[14px] bg-[#AF52DE] dark:bg-[#BF5AF2] flex items-center justify-center mb-5 shadow-md">
+                  <Brain className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-[#1d1d1f] dark:text-white mb-3 tracking-tight">
+                  Enterprise AI, Compact Form
+                </h3>
+                <p className="text-sm text-[#1d1d1f]/65 dark:text-white/55 leading-relaxed">
+                  GPU-accelerated hardware running the same architecture deployed in our
+                  healthcare, government, and finance case studies — packaged into an
+                  appliance that fits in a standard server rack.
+                </p>
+              </div>
+
+              <div className="glass-card rounded-[24px] p-8 hover:scale-[1.02] transition-all duration-300">
+                <div className="w-12 h-12 rounded-[14px] bg-[#FF9500] dark:bg-[#FF9F0A] flex items-center justify-center mb-5 shadow-md">
+                  <Lightbulb className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-[#1d1d1f] dark:text-white mb-3 tracking-tight">
+                  Trained on Your Knowledge
+                </h3>
+                <p className="text-sm text-[#1d1d1f]/65 dark:text-white/55 leading-relaxed">
+                  Feed it your policies, procedures, research, client documents, and
+                  operational manuals. The AI learns exclusively from your organization&apos;s
+                  own institutional knowledge — not the internet.
+                </p>
+              </div>
+
+              <div className="glass-card rounded-[24px] p-8 hover:scale-[1.02] transition-all duration-300">
+                <div className="w-12 h-12 rounded-[14px] bg-[#FF2D55] dark:bg-[#FF375F] flex items-center justify-center mb-5 shadow-md">
+                  <Target className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-[#1d1d1f] dark:text-white mb-3 tracking-tight">
+                  Every Industry, Every Size
+                </h3>
+                <p className="text-sm text-[#1d1d1f]/65 dark:text-white/55 leading-relaxed">
+                  Healthcare, government, finance, legal, manufacturing, education — IA Atomic
+                  adapts to any industry. Configurations available for organizations from 50
+                  to 5,000+ employees.
+                </p>
+              </div>
+
+              <div className="glass-card rounded-[24px] p-8 hover:scale-[1.02] transition-all duration-300">
+                <div className="w-12 h-12 rounded-[14px] bg-[#5856D6] dark:bg-[#5E5CE6] flex items-center justify-center mb-5 shadow-md">
+                  <Globe className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-[#1d1d1f] dark:text-white mb-3 tracking-tight">
+                  Managed by <ArvinTechLink className="text-lg" />
+                </h3>
+                <p className="text-sm text-[#1d1d1f]/65 dark:text-white/55 leading-relaxed">
+                  Every IA Atomic includes deployment, configuration, document preparation,
+                  training, and ongoing support from <ArvinTechLink /> — managed IT and AI
+                  services since 2000.
                 </p>
               </div>
             </div>
-            
-            <div className="w-12 h-1 bg-white/50 mx-auto mt-12 rounded-full shadow-lg"></div>
+
+            {/* Powered by ArvinTech card */}
+            <div className="glass-card rounded-[40px] p-14 shadow-xl text-center">
+              <h3 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] dark:text-white mb-6 tracking-tight">
+                Powered by <ArvinTechLink className="text-3xl sm:text-4xl font-bold" showLogo />
+              </h3>
+              <p className="text-xl text-[#1d1d1f]/80 dark:text-white/80 leading-relaxed mb-4 max-w-2xl mx-auto">
+                IntelligenceAmplifier.AI and the IA Atomic appliance are deployed and supported
+                by <ArvinTechLink />, providing managed IT and AI automation services since 2000.
+              </p>
+              <p className="text-lg text-[#1d1d1f]/70 dark:text-white/70 leading-relaxed max-w-2xl mx-auto">
+                From document preparation to deployment to ongoing optimization — <ArvinTechLink /> ensures
+                your AI investment delivers measurable results from day one.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* ── FINAL CTA ── */}
+        <section className="py-32 relative overflow-hidden bg-[#f5f5f7] dark:bg-[#000000]">
+          <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-[#007AFF] rounded-full filter blur-[150px] opacity-15 dark:opacity-10" />
+          <div className="absolute bottom-20 right-1/4 w-[500px] h-[500px] bg-[#AF52DE] rounded-full filter blur-[150px] opacity-15 dark:opacity-10" />
+
+          <div className="relative max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1d1d1f] dark:text-white mb-6 tracking-tight">
+              Deploy IntelligenceAmplifier.AI in Your Organization
+            </h2>
+            <p className="text-xl text-[#1d1d1f]/70 dark:text-white/70 mb-12 leading-relaxed">
+              Join organizations using AI aligned with their own knowledge, documents, and workflows.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="mailto:info@arvintech.com?subject=Business Demo Request">
+                <button className="px-12 py-5 bg-[#007AFF] dark:bg-[#0A84FF] text-white rounded-full text-xl font-bold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-[0_8px_40px_rgb(0,122,255,0.35)]">
+                  Schedule Demo
+                </button>
+              </Link>
+              <Link href="mailto:info@arvintech.com?subject=Deployment Consultation">
+                <button className="px-12 py-5 glass-effect text-[#1d1d1f] dark:text-white rounded-full text-xl font-semibold hover:scale-105 transition-all duration-300 border border-[#1d1d1f]/20 dark:border-white/20">
+                  Request Consultation
+                </button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── PHILOSOPHY ── */}
+        <section className="py-24 relative overflow-hidden bg-white dark:bg-[#1a1a1a] border-t border-[var(--separator)]">
+          <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+            <h2 className="text-3xl font-bold text-[#1d1d1f] dark:text-white mb-8 tracking-tight">
+              Intelligence Amplification Philosophy
+            </h2>
+            <blockquote className="text-xl sm:text-2xl text-[#1d1d1f]/80 dark:text-white/80 leading-relaxed italic font-medium mb-8">
+              &quot;Artificial intelligence should amplify human intelligence — not replace it.&quot;
+            </blockquote>
+            <p className="text-lg text-[#1d1d1f]/70 dark:text-white/70 leading-relaxed max-w-2xl mx-auto">
+              IntelligenceAmplifier.AI enables organizations to enhance their capabilities while
+              preserving human judgment, creativity, and decision-making. This is intelligence
+              amplification.
+            </p>
+          </div>
+        </section>
 
         <Footer />
       </main>
     </>
   );
 }
-
-const projects = [
-  {
-    icon: BookStack,
-    iconBg: "bg-[#007AFF] dark:bg-[#0A84FF]",
-    title: "Intelligence Amplifier Series",
-    subtitle: "Attitudes towards AI",
-    description: "A series of books exploring our relationship with artificial intelligence: San Francisco: AI Capital of the World, Alarming Rise of Stupidity Amplified, The Amplified Human Spirit, and Amplified Nietzsche (coming soon).",
-    status: "Published",
-    statusBg: "bg-[#007AFF]/10 dark:bg-[#0A84FF]/20",
-    statusText: "text-[#007AFF] dark:text-[#0A84FF]",
-    link: "/intelligence-amplifier-series"
-  },
-  {
-    icon: BookOpen,
-    iconBg: "bg-[#AF52DE] dark:bg-[#BF5AF2]",
-    title: "Amplified Classics",
-    subtitle: "Rediscover the Living Soul of Literature",
-    description: "Experience timeless literature through Intelligence Amplification — Pride and Prejudice, Sense and Sensibility, Jane Eyre, Wuthering Heights, and A Room with a View — enriched with dynamic annotations, contextual essays, and reflective dialogues.",
-    status: "Available",
-    statusBg: "bg-[#AF52DE]/10 dark:bg-[#BF5AF2]/20",
-    statusText: "text-[#AF52DE] dark:text-[#BF5AF2]",
-    link: "/amplified-classics"
-  },
-  {
-    icon: Brain,
-    iconBg: "bg-[#34C759] dark:bg-[#30D158]",
-    title: "Arvintech",
-    subtitle: "An Innovative Attitude to AI—Collaboration",
-    description: "Unlearn to relearn. Measure intelligence by possibility. Prepare for new, exciting ways to live our human lives amplified.",
-    status: "Active",
-    statusBg: "bg-[#34C759]/10 dark:bg-[#30D158]/20",
-    statusText: "text-[#34C759] dark:text-[#30D158]"
-  },
-  {
-    icon: Dice,
-    iconBg: "bg-[#FF9500] dark:bg-[#FF9F0A]",
-    title: "Lottery Predictor",
-    subtitle: "Statistical Analysis & Pattern Recognition",
-    description: "An AI-powered analysis tool that examines historical lottery data patterns, statistical probabilities, and number frequency to provide insights. A fascinating exploration of randomness, probability, and the limits of prediction.",
-    status: "Research",
-    statusBg: "bg-[#FF9500]/10 dark:bg-[#FF9F0A]/20",
-    statusText: "text-[#FF9500] dark:text-[#FF9F0A]"
-  },
-  {
-    icon: Rice,
-    iconBg: "bg-[#FF2D55] dark:bg-[#FF375F]",
-    title: "Global Rice",
-    subtitle: "An Amplified Global Farm to Kitchen Table Cookbook",
-    description: "A culinary journey exploring rice cultivation, cultural traditions, and recipes from around the world. This amplified cookbook connects farmers, traditions, and home cooks through the universal grain that feeds humanity, enriched with cultural context and agricultural insights.",
-    status: "In Development",
-    statusBg: "bg-[#FF2D55]/10 dark:bg-[#FF375F]/20",
-    statusText: "text-[#FF2D55] dark:text-[#FF375F]"
-  }
-];
-
-const methods = [
-  {
-    title: "Direct Amplification",
-    bgColor: "bg-[#007AFF] dark:bg-[#0A84FF]",
-    textColor: "text-white",
-    accentColor: "text-[#007AFF] dark:text-[#0A84FF]",
-    description: "This is the act of co-creation — writing, thinking, or designing with an AI partner in real time. It leverages rapid feedback loops where human intuition meets machine precision.",
-    examples: "writing essays through guided dialogue, generating hypotheses with LLMs, composing music through iterative prompts.",
-    tagline: "You think, it refines. You feel, it translates."
-  },
-  {
-    title: "Selective Amplification",
-    bgColor: "bg-[#AF52DE] dark:bg-[#BF5AF2]",
-    textColor: "text-white",
-    accentColor: "text-[#AF52DE] dark:text-[#BF5AF2]",
-    description: "Here, the focus shifts to curation and discernment. Not every generated idea deserves preservation — amplification demands judgment. This method teaches how to select what deserves to grow.",
-    examples: "summarizing large bodies of text, extracting insights from data, or choosing the most resonant phrasing from AI drafts.",
-    tagline: "Amplification is not abundance — it is refinement."
-  },
-  {
-    title: "Shaped Amplification",
-    bgColor: "bg-[#34C759] dark:bg-[#30D158]",
-    textColor: "text-white",
-    accentColor: "text-[#34C759] dark:text-[#30D158]",
-    description: "This method introduces contextual framing — applying ethical, emotional, or aesthetic boundaries that shape how intelligence operates. It is where human values sculpt machine outputs.",
-    examples: "crafting educational materials aligned with empathy; training personal AI models with cultural sensitivity; embedding moral reflection into creative works.",
-    tagline: "Shaping defines the soul of amplification."
-  },
-  {
-    title: "Reflective Amplification",
-    bgColor: "bg-[#FF9500] dark:bg-[#FF9F0A]",
-    textColor: "text-white",
-    accentColor: "text-[#FF9500] dark:text-[#FF9F0A]",
-    description: "Every amplified act must lead to reflection — a feedback mirror that teaches the human as much as it instructs the machine.",
-    examples: "journaling with AI, Socratic dialogue prompts, self-assessment cycles, iterative refinement through reflection logs.",
-    tagline: "Amplification without reflection is automation."
-  },
-  {
-    title: "Collective Amplification",
-    bgColor: "bg-[#FF2D55] dark:bg-[#FF375F]",
-    textColor: "text-white",
-    accentColor: "text-[#FF2D55] dark:text-[#FF375F]",
-    description: "The intelligence amplifier ultimately connects many minds into one learning field. This is the social dimension of amplification — where communities of readers, teachers, and thinkers contribute to shared growth.",
-    examples: "collaborative annotation of texts, community-authored amplified editions, open-source learning repositories.",
-    tagline: "Intelligence shared is intelligence multiplied."
-  }
-];
-
